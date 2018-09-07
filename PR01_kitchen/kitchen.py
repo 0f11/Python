@@ -6,7 +6,7 @@ Lihtne vestlus kliendiga kus küsitakse kliendi nime ning joogi eelistusi if/els
 
 """
 print("Welcome to the kitchen.")
-# Küsi kasutajalt nimi ja salvesta see muutujasse
+# Küsi kasutajalt nimi ja salvesta see muutujasse.
 name = input("What is your name? ")
 # Tervita kasutajat: Hi there, [nimi]!.
 print(f"Hi there, {name}!")
