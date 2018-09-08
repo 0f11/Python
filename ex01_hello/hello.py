@@ -27,7 +27,7 @@ elif body_mass_index > 24.9:
 
 # 1. Programm küsib sisendit: (input)
 # "What's your name?:" ja "Where do you study?:"
-# Nimi ja kool on nõutud(Ei tohi olla tühjad).
+# Nimi ja kool on nõutud(Ei tohi o.lla tühjad).
 # Kui nimi on puudu peab programm printima "Name was not inserted!",
 # kui kooli nimi on puudu tuleb printida "School was not inserted!"
 # Lõpus peaks programm printima "(Sisestatud nimi), welcome to (sisestatud kool)"
