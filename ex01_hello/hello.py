@@ -11,7 +11,7 @@ else:
     print(f"Hello,{name}!")
 school = input("Where do you study?")
 if school == "":
-    print("School was not entered!")
+    print("School was not inserted!")
 else:
     print(f"{name}, welcome to {school}")
 
