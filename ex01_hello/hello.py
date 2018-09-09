@@ -19,8 +19,8 @@ mass = float(input("Whats your weight(kg)?"))
 height = float(input("Whats you height(m)?"))
 bmi = mass / (height * height)
 if bmi <= 18.49:
-    print(f"{bmi},You are underweight!")
+    print(f"{bmi},underweight!")
 elif bmi >= 24.91:
-    print(f"{bmi}, You are overweight!")
+    print(f"{bmi}, overweight!")
 elif bmi > 18.5 or bmi < 24.9:
-    print(f"{bmi},You are in ideal weight!")
+    print(f"{bmi},idealweight!")
