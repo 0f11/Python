@@ -17,10 +17,10 @@ else:
 
 mass = float(input("Whats your weight(kg)?"))
 height = float(input("Whats you height(m)?"))
-bmi = mass / (height * height)
+kehamassiindeks = mass / (height * height)
 if bmi <= 18.49:
-    print(f"{bmi},underweight!")
+    print(f"{kehamassiindeks},underweight!")
 elif bmi >= 24.91:
-    print(f"{bmi}, overweight!")
+    print(f"{kehamassiindeks}, overweight!")
 elif bmi > 18.5:
-    print(f"{bmi},ideal weight!")
+    print(f"{kehamassiindeks},ideal weight!")
