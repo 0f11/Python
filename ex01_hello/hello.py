@@ -19,8 +19,8 @@ mass = float(input("Whats your weight(kg)?"))
 height = float(input("Whats you height(m)?"))
 kehamassiindeks = mass / (height * height)
 if kehamassiindeks <= 18.49:
-    print(f"{kehamassiindeks},alakaaluline!")
+    print(f"{kehamassiindeks}, alakaaluline!")
 elif kehamassiindeks >= 24.91:
     print(f"{kehamassiindeks}, ülekaaluline!")
 elif kehamassiindeks > 18.5:
-    print(f"{kehamassiindeks},normaalkaal!")
+    print(f"{kehamassiindeks}, normaalkaal!")
