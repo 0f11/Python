@@ -13,12 +13,10 @@ school = input("Where do you study?")
 if school == "":
     print("School was not entered!")
 else:
-    print(f"{name}, welcome to {school}!")
+    print(f"{name}, welcome to {school}")
 
-mass = float(input("Whats your weight?"))
+mass = float(input("Whats your weight(kg)?"))
 height = float(input("Whats you height(m)?"))
-if height > 2.3:
-    print("Please enter in meters!")
 bmi = mass / (height * height)
 if bmi <= 18.49:
     print(f"{bmi},You are underweight!")
