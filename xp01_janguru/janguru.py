@@ -5,12 +5,12 @@ Täiesti random
 
 """
 
-x1, v1, x2, v2 = map(int, input().split())
+pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2 = map(int, input().split())
 
 # Note: 0 <= x1 < x2 <= 10000
 # x1 + k.v1 = x2 + k.v20,
 
-if (v2 < v1) and ((x2 - x1) % (v2 - v1)) == 0:
+if (jump_distance2 < jump_distance1) and ((pos2 - pos1) % (jump_distance2 - jump_distance1)) == 0:
     print("YES")
 else:
     print("NO")
