@@ -22,5 +22,5 @@ if bmi <= 18.49:
     print(f"{bmi},underweight!")
 elif bmi >= 24.91:
     print(f"{bmi}, overweight!")
-elif bmi > 18.5 or bmi < 24.9:
-    print(f"{bmi},idealweight!")
+elif bmi > 18.5:
+    print(f"{bmi},ideal weight!")
