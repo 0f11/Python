@@ -4,10 +4,16 @@ janguru.py.
 Täiesti random
 """
 pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2 = map(int, input().split())
-pos_x1 = pos1 + ((jump_distance1 / sleep1) * sleep1)
-pos_x2 = pos2 + ((jump_distance2 / sleep2) * sleep2)
+hype1 = (jump_distance1 / sleep1) * sleep1
+hype2 = (jump_distance2 / sleep2) * sleep2
+pos_x1 = pos1 + hype1
+pos_x2 = pos2 + hype2
+if pos2 - pos1 and jump_distance2 - jump_distance1 == 0:
+    print("-1")
+    exit("Ei kohtu")
 if pos1 <= pos2 and jump_distance1 <= jump_distance2 and ((pos2 - pos1) % (jump_distance2 - jump_distance1) == 0):
     print("-1")
+    exit("Ei kohtu")
 while pos_x1 != pos_x2:
     pos_x1 = pos_x1 + jump_distance1
     pos_x2 = pos_x2 + jump_distance2
