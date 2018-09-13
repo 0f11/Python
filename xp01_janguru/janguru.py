@@ -9,7 +9,8 @@ Täiesti random
 
 
 def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
-    # Jänkude algpositsioonid
+    """ Jänkude algpositsioonid
+    """
     hype1 = (jump_distance1 / sleep1) * sleep1
     hype2 = (jump_distance2 / sleep2) * sleep2
     pos_x1 = pos1 + hype1
