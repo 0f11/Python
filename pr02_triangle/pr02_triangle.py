@@ -4,9 +4,9 @@ import math
 
 
 def find_triangle_info(a, b, c):
+
     """
-    Write a function which finds perimeter, area and type(eg: isosceles right triangle) of triangle based on given side
-    lengths. (Note: a <= b <= c).
+    Write a function which finds perimeter, area and type of triangle based on given side lengths. (Note: a <= b <= c).
 
     The function should print "{type_by_length} {type_by_angle} triangle with perimeter of {perimeter} units and
     area of {area} units".
