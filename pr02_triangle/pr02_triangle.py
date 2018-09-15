@@ -4,7 +4,6 @@ import math
 
 
 def find_triangle_info(a, b, c):
-
     """
     Write a function which finds perimeter, area and type of triangle based on given side lengths. (Note: a <= b <= c).
 
