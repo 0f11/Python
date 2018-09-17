@@ -35,7 +35,7 @@ def convert_cartesian_to_polar(x, y):
     r = round(sqrt((x * x) + (y * y)), 2)
 
     if x > 0:
-        fii = atan(x / y)
+        fii = atan(y / x)
     elif (x < 0) and (y >= 0):
         fii = atan(y / x) + pi
     elif x < 0 and y < 0:
