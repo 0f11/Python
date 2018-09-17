@@ -10,7 +10,7 @@ def convert_polar_to_cartesian(r, phi):
     """
     Convert point from polar coordinates to cartesian coordinates.
 
-    :param r: radius, the distance from pole to point.
+    :param r: radius,, the distance from pole to point.
     :param phi: polar angle, or azimuth in degrees.
     :return: tuple, of x- and y-coordinate of the point
     """
