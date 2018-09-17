@@ -17,8 +17,8 @@ def convert_polar_to_cartesian(r, phi):
     phi = radians(phi)
     x = round(r * cos(phi), 2)
     y = round(r * sin(phi), 2)
-    tup2 = (x, y)
-    print(f"{tup2}")
+    cartesian = tuple([x, y])
+    print(cartesian)
     pass
 
 
@@ -52,9 +52,9 @@ def convert_cartesian_to_polar(x, y):
     elif x == 0 and y == 0:
         fii = 0
     fii = round(degrees(fii), 2)
-    tup3 = (r, fii)
+    polar = tuple([r, fii])
 
-    print(f"{tup3}")
+    print(polar)
     pass
 
 
