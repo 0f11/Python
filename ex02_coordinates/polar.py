@@ -17,8 +17,8 @@ def convert_polar_to_cartesian(r, phi):
     phi = radians(phi)
     x = round(r * cos(phi), 2)
     y = round(r * sin(phi), 2)
-    tuple = x, y
-    print(f"{tuple}")
+    tup2 = (x, y)
+    print(f"{tup2}")
     pass
 
 
@@ -42,22 +42,21 @@ def convert_cartesian_to_polar(x, y):
     if x > 0:
         fii = atan(x / y)
     elif (x < 0) and (y >= 0):
-        fii = round(atan(y / x) + pi, 2)
+        fii = atan(y / x) + pi
     elif x < 0 and y < 0:
-        fii = round(atan(y / x) - pi, 2)
+        fii = atan(y / x) - pi
     elif (x == 0) and (y > 0):
-        fii = round(pi / 2, 2)
+        fii = pi / 2
     elif x == 0 and y < 0:
-        fii = round((-1) * (pi / 2), 2)
+        fii = (-1) * (pi / 2)
     elif x == 0 and y == 0:
         fii = 0
+    fii = round(degrees(fii), 2)
+    tup3 = (r, fii)
 
-    tuple = r, fii
+    print(f"{tup3}")
+    pass
 
-    print(f"{tuple}")
-
-
-pass
 
 if __name__ == '__main__':
     print("to polar")
