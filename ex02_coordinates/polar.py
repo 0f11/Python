@@ -28,7 +28,7 @@ def convert_cartesian_to_polar(x, y):
     Polar angle is the angle between positive x-axis and the ray from the pole (0, 0) to the point (x, y).
     Calculated using atan2 function, the angle is float (φ) in range −180° < φ ≤ 180°.
 
-    :param x: x-coordinate of given point
+    :param x:: x-coordinate of given point
     :param y: y-coordinate of given point
     :return: tuple, of polar radius and polar angle in degrees.
     """
