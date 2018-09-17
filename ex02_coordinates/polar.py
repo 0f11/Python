@@ -9,7 +9,6 @@ deg = degrees(rad)
 def convert_polar_to_cartesian(r, phi):
     """
     Convert point from polar coordinates to cartesian coordinates.
-
     :param r: radius,, the distance from pole to point.
     :param phi: polar angle, or azimuth in degrees.
     :return: tuple, of x- and y-coordinate of the point
@@ -36,9 +35,7 @@ def convert_cartesian_to_polar(x, y):
     :param y: y-coordinate of given point
     :return: tuple, of polar radius and polar angle in degrees.
     """
-
     r = round(sqrt((x * x) + (y * y)), 2)
-
     if x > 0:
         fii = atan(x / y)
     elif (x < 0) and (y >= 0):
@@ -53,7 +50,6 @@ def convert_cartesian_to_polar(x, y):
         fii = 0
     fii = round(degrees(fii), 2)
     polar = tuple([r, fii])
-
     print(polar)
     pass
 
