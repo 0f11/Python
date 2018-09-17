@@ -2,9 +2,6 @@
 
 from math import cos, sin, pi, atan, degrees, radians, sqrt
 
-rad = radians(45)
-deg = degrees(rad)
-
 
 def convert_polar_to_cartesian(r, phi):
     """
@@ -17,7 +14,7 @@ def convert_polar_to_cartesian(r, phi):
     x = round(r * cos(phi), 2)
     y = round(r * sin(phi), 2)
     cartesian = tuple([x, y])
-    print(cartesian)
+    return cartesian
     pass
 
 
@@ -36,6 +33,7 @@ def convert_cartesian_to_polar(x, y):
     :return: tuple, of polar radius and polar angle in degrees.
     """
     r = round(sqrt((x * x) + (y * y)), 2)
+
     if x > 0:
         fii = atan(x / y)
     elif (x < 0) and (y >= 0):
@@ -48,9 +46,10 @@ def convert_cartesian_to_polar(x, y):
         fii = (-1) * (pi / 2)
     elif x == 0 and y == 0:
         fii = 0
+
     fii = round(degrees(fii), 2)
     polar = tuple([r, fii])
-    print(polar)
+    return polar
     pass
 
 
