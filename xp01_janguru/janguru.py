@@ -20,6 +20,10 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
         aeg2 = aeg2 + 1
         if aeg % sleep1 == 0:
             pos_x1 = pos_x1 + jump_distance1
+        elif pos_x1 == pos_x2:
+            break
         if aeg2 % sleep2 == 0:
             pos_x2 = pos_x2 + jump_distance2
+        elif pos_x1 == pos_x2:
+            break
     print(f"{pos_x2}")
