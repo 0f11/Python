@@ -29,7 +29,7 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
     print(f"{pos_x2}")
 
 
-meet_me(918674, 5527, 5704, 1919, 2763, 2833)  # => 141459230
+# meet_me(918674, 5527, 5704, 1919, 2763, 2833)  # => 141459230
 meet_me(1, 2, 1, 2, 1, 1)  # => 3
 meet_me(1, 2, 3, 4, 5, 5)  # => -1
 meet_me(10, 7, 7, 5, 8, 6)  # => 45
