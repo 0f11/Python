@@ -1,3 +1,9 @@
+"""
+janguru.py.
+
+Olen kulutanu sellele juba 3 nädalat, vaadates sellele ajale tagasi, ei khetse ma miskit.
+"""
+
 def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
     """ Jänkude algpositsioonid. """
 
@@ -10,7 +16,7 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
 
     if pos2 - pos1 and jump_distance2 - jump_distance1 == 0:
         return print("-1")
-    if jump_distance1 <= jump_distance2 and pos1 <= pos2 and ((pos2 - pos1) % (jump_distance2 - jump_distance1) == 0):
+    if jump_distance1 <= jump_distance2 and pos1 <= pos2:
         return print("-1")
     while pos_x1 != pos_x2:
 
@@ -18,13 +24,13 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
         aeg2 = aeg2 + 1
         if aeg % sleep1 == 0:
             pos_x1 = pos_x1 + jump_distance1
-            #print(f"{pos_x1} pos 1")
-            #print(f"{aeg}")
+            # print(f"{pos_x1} pos 1")
+            # print(f"{aeg}")
 
         if aeg2 % sleep2 == 0:
             pos_x2 = pos_x2 + jump_distance2
-            #print(f"{pos_x2} pos 2")
-            #print(f"{aeg2}")
+            # print(f"{pos_x2} pos 2")
+            # print(f"{aeg2}")
 
         if pos_x1 == pos_x2:
             break
@@ -41,7 +47,7 @@ meet_me(10, 7, 7, 5, 8, 6)  # => 45
 meet_me(300, 8, 6, 100, 7, 4)  # => 940
 meet_me(1, 7, 1, 15, 5, 1)  # => 50
 meet_me(0, 1, 1, 1, 1, 1)  # => -1
-#meet_me(918674, 5527, 5704, 1919, 2763, 2833)  # => 141459230
+# meet_me(918674, 5527, 5704, 1919, 2763, 2833)  # => 141459230
 meet_me(911, 19, 25, 2, 26, 32)  # => 13964
 meet_me(941, 27, 47, 26, 17, 28)  # => 17060
 meet_me(934, 22, 62, 82, 39, 34)  # => 1330
