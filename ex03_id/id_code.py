@@ -77,25 +77,18 @@ def check_day_number(year_number: int, month_number: int, day_number: int):
     :param day_number: int
     :return: boolean
     """
-    if month_number < 10 and len(str(month_number)) == int(2):
-        str(month_number).lstrip("0")
 
-    if year_number < 50:
-        str(year_number).join(str(20) + str(year_number))
-    elif year_number > 50:
-        str(year_number).join(str(19) + str(year_number))
-    int(year_number)
-    int(month_number)
-    int(day_number)
-    if int(month_number) == 2 and day_number <= 29:
+    if month_number == 2 and day_number <= 29 and check_leap_year(year_number) == True:
         return True
-    elif int(month_number) % int(2) == 0 and int(month_number) <= 7 and int(day_number) <= 30:
+    if month_number == 2 and day_number <= 28 and check_leap_year(year_number) == False:
+        return False
+    if month_number > 2 and int(month_number) % 2 == 0 and int(month_number) <= 7 and int(day_number) <= 30:
         return True
-    elif int(month_number) % 2 != 0 and int(month_number) > 7 and int(day_number) == 30:
+    elif int(month_number) % 2 != 0 and int(month_number) > 7 and int(day_number) <= 30:
         return True
-    elif int(month_number) % 2 == 0 and int(month_number) > 7 and int(day_number) == 31:
+    elif int(month_number) % 2 == 0 and int(month_number) > 7 and int(day_number) <= 31:
         return True
-    elif int(month_number) % 2 != 0 and int(month_number) <= 7 and int(day_number) == 31:
+    elif int(month_number) % 2 != 0 and int(month_number) <= 7 and int(day_number) <= 31:
         return True
     else:
         return False
@@ -109,9 +102,9 @@ def check_leap_year(year_number: int):
     :param year_number: int
     :return: boolean
     """
-    if int(year_number) % 400 == 0 or int(year_number) % 4 == 0:
+    if int(year_number) / 400 == 0 and int(year_number) % 4 == 0:
         return True
-    if int(year_number) % 100 == 0:
+    if int(year_number) / 100 == 0:
         return False
     pass
 
@@ -136,7 +129,8 @@ def check_control_number(id_code: str):
     :param id_code: string
     :return: boolean
     """
-    int(id_code)
+
+    kontroll_nr = int(id_code[10:11])
     list_1 = [i for i in id_code]
     x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
     kontroll = [int(list_1[i]) * int(x[i]) for i in range(len(x))]
@@ -146,8 +140,8 @@ def check_control_number(id_code: str):
         kontroll2 = [int(list_1[i]) * int(y[i]) for i in range(len(y))]
         number = sum(kontroll2) % 11
         if number == 10:
-            str(number).split("1")
-    if number == list_1[-1]:
+            number = number % 10
+    if int(number) == int(kontroll_nr):
         return True
     else:
         return False
