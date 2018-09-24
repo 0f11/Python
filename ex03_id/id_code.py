@@ -23,7 +23,6 @@ def check_gender_number(gender_number: int):
     :param gender_number: int
     :return: boolean
     """
-    str[2:1] = int(gender_number)
     if gender_number == range(1, 7):
         return True
     else:
@@ -40,11 +39,11 @@ def check_year_number_two_digits(year_number: int):
     """
 
     if year_number < 10:
-        str[1:3] = str(year_number).lstrip("0")
+        str(year_number).lstrip("0")
     int(year_number)
-    if year_number >= int(100):
+    if year_number >= 100:
         return False
-    if year_number == range(1, 99):
+    if year_number < 100:
         return True
     else:
         return False
@@ -59,9 +58,9 @@ def check_month_number(month_number: int):
     :return: boolean
     """
     if month_number < 10 and len(str(month_number)) == int(2):
-        str[3:5] = str(month_number).lstrip("0")
+        str(month_number).lstrip("0")
     int(month_number)
-    if month_number == range(1, 12):
+    if month_number <= 12:
         return True
     else:
         return False
@@ -78,15 +77,19 @@ def check_day_number(year_number: int, month_number: int, day_number: int):
     :param day_number: int
     :return: boolean
     """
-    if year_number < 50:
-        str[1:3] = str(year_number).join(str(20) + str(year_number))
-    elif year_number > 50:
-        str[1:3] = str(year_number).join(str(19) + str(year_number))
-    str[1:3] = int(year_number)
-    str[3:5] = int(month_number)
-    str[5:7] = int(day_number)
+    if month_number < 10 and len(str(month_number)) == int(2):
+        str(month_number).lstrip("0")
 
-    if int(month_number) % int(2) == 0 and int(month_number) <= 7 and int(day_number) <= 30:
+    if year_number < 50:
+        str(year_number).join(str(20) + str(year_number))
+    elif year_number > 50:
+        str(year_number).join(str(19) + str(year_number))
+    int(year_number)
+    int(month_number)
+    int(day_number)
+    if int(month_number) == 2 and day_number <= 29:
+        return True
+    elif int(month_number) % int(2) == 0 and int(month_number) <= 7 and int(day_number) <= 30:
         return True
     elif int(month_number) % 2 != 0 and int(month_number) > 7 and int(day_number) == 30:
         return True
@@ -106,9 +109,6 @@ def check_leap_year(year_number: int):
     :param year_number: int
     :return: boolean
     """
-
-    str[1:3] = year_number
-    int(year_number)
     if int(year_number) % 400 == 0 or int(year_number) % 4 == 0:
         return True
     if int(year_number) % 100 == 0:
@@ -123,7 +123,7 @@ def check_born_order(born_order: int):
     :param born_order: int
     :return: boolean
     """
-    str[7:10] = int(born_order)
+    int(born_order)
     return True
     pass
 
@@ -136,13 +136,22 @@ def check_control_number(id_code: str):
     :param id_code: string
     :return: boolean
     """
-    str[10:11] = int(id_code)
-    id_code1 = sum((1 * str[0:0]) + (2 * str[1:1]) + (3 * str[2:2]) + (4 * str[3:3]) + (5 * str[4:4]) + (6 * str[5:5]) +
-                   (7 * str[6:6]) + (8 * str[7:7]) + (9 * str[8:8]) + (1 * str[9:9]))
-    if id_code % id_code1 == 0:
+    int(id_code)
+    list_1 = [i for i in id_code]
+    x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+    kontroll = [int(list_1[i]) * int(x[i]) for i in range(len(x))]
+    number = sum(kontroll) % 11
+    if number == 0:
+        y = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
+        kontroll2 = [int(list_1[i]) * int(y[i]) for i in range(len(y))]
+        number = sum(kontroll2) % 11
+        if number == 10:
+            str(number).split("1")
+    if number == list_1[-1]:
         return True
     else:
         return False
+    pass
 
 
 if __name__ == '__main__':
@@ -153,14 +162,14 @@ if __name__ == '__main__':
     print(check_your_id("12345678901"))  # -> False
     print("\nGender number:")
     print("\nYear number:")
-    # print(check_year_number_two_digits(100))  # -> False
+    print(check_year_number_two_digits(100))  # -> False
     print(check_year_number_two_digits(50))  # -> true
     print("\nMonth number:")
     print(check_month_number(2))  # -> True
     print(check_month_number(15))  # -> False
     print("\nDay number:")
-    # print(check_day_number(5, 12, 25))  # -> True
-    # print(check_day_number(10, 8, 32))  # -> False
+    print(check_day_number(5, 12, 25))  # -> True
+    print(check_day_number(10, 8, 32))  # -> False
     print(check_leap_year(1804))  # -> True
     print(check_leap_year(1800))  # -> False
     print("\nFebruary check:")
