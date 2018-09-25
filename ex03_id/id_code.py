@@ -23,7 +23,7 @@ def check_gender_number(gender_number: int):
     :param gender_number: int
     :return: boolean
     """
-    if gender_number == 0 or gender_number <= 6:
+    if gender_number != 0 or gender_number <= 6:
         return True
     else:
         return False
@@ -56,9 +56,8 @@ def check_month_number(month_number: int):
     :param month_number: int
     :return: boolean
     """
-    if month_number == 0:
-        return False
-    if month_number <= 12:
+
+    if month_number <= 12 and month_number != 0:
         return True
     else:
         return False
@@ -121,8 +120,10 @@ def check_born_order(born_order: int):
     :param born_order: int
     :return: boolean
     """
-    if len(str(born_order)) == int(3):
+    if len(str(born_order)) == int(3) and str(born_order).isnumeric():
         return True
+    else:
+        return False
     pass
 
 
