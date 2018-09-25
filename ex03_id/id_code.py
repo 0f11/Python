@@ -23,7 +23,7 @@ def check_gender_number(gender_number: int):
     :param gender_number: int
     :return: boolean
     """
-    if gender_number == range(1, 7):
+    if gender_number <= 7:
         return True
     else:
         return False
