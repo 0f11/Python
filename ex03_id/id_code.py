@@ -9,7 +9,7 @@ def check_your_id(id_code: str):
     :return: boolean
     """
     str1 = id_code
-    if len(str1) == int(11):
+    if len(str1) == int(11) and id_code.isdigit() == True:
         return True
     else:
         return False
@@ -23,7 +23,7 @@ def check_gender_number(gender_number: int):
     :param gender_number: int
     :return: boolean
     """
-    if gender_number <= 7:
+    if gender_number == 0 or gender_number <= 6:
         return True
     else:
         return False
@@ -60,6 +60,8 @@ def check_month_number(month_number: int):
     if month_number < 10 and len(str(month_number)) == int(2):
         str(month_number).lstrip("0")
     int(month_number)
+    if month_number == 0:
+        return False
     if month_number <= 12:
         return True
     else:
@@ -123,8 +125,8 @@ def check_born_order(born_order: int):
     :param born_order: int
     :return: boolean
     """
-    int(born_order)
-    return True
+    if len(str(born_order)) == int(3):
+        return True
     pass
 
 
@@ -209,6 +211,7 @@ def get_gender(gender_number: int):
     :param gender_number: int
     :return: str
     """
+    gender_number = id_code[0:1]
     if gender_number % 2 == 0:
         return "Male"
     if gender_number % 2 != 0:
