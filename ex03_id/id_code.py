@@ -222,10 +222,10 @@ def get_gender(gender_number: int):
     :return: str
     """
     if gender_number % 2 == 0:
-        sugu = str("Female")
+        sugu = "Female"
         return sugu
     if gender_number % 2 != 0:
-        sugu = str("Male")
+        sugu = "Male"
         return sugu
     pass
 
