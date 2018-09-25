@@ -201,11 +201,11 @@ def get_data_from_id(id_code: str):
     """
     year = id_code[1:3]
     gender_number = id_code[0:1]
-    if gender_number == 1 or 2:
+    if int(gender_number) <= 2:
         year = "{}{}".format(18, year)
-    elif gender_number == 3 or 4:
+    if int(gender_number) == 3 or int(gender_number) == 4:
         year = "{}{}".format(19, year)
-    elif gender_number == 5 or 6:
+    if int(gender_number) == 5 or int(gender_number) == 6:
         year = "{}{}".format(20, year)
     day = id_code[5:7]
     month = id_code[3:5]
@@ -243,13 +243,22 @@ def get_full_year(gender_number: int, year: int):
     :param year: int
     :return: int
     """
-    if gender_number == 1 or 2:
+    if gender_number <= 2:
+        if year < 10:
+            year = "{}{}".format(180, year)
+            return int(year)
         year = "{}{}".format(18, year)
         return int(year)
-    elif gender_number == 3 or 4:
+    if gender_number == 3 or gender_number == 4:
+        if year < 10:
+            year = "{}{}".format(190, year)
+            return int(year)
         year = "{}{}".format(19, year)
         return int(year)
-    elif gender_number == 5 or 6:
+    if gender_number == 5 or gender_number == 6:
+        if year < 10:
+            year = "{}{}".format(200, year)
+            return int(year)
         year = "{}{}".format(20, year)
         return int(year)
     pass
