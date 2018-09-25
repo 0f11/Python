@@ -219,7 +219,7 @@ def get_data_from_id(id_code: str):
 
 def get_gender(gender_number: int):
     """
-    Define the gender according to the number from ID code.
+    Define the gender, according to the number from ID code.
 
     :param gender_number: int
     :return: str
