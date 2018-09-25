@@ -37,7 +37,6 @@ def check_year_number_two_digits(year_number: int):
     :param year_number: int
     :return: boolean
     """
-
     if year_number < 10:
         str(year_number).lstrip("0")
     int(year_number)
@@ -72,8 +71,8 @@ def check_month_number(month_number: int):
 def check_day_number(year_number: int, month_number: int, day_number: int):
     """
     Check if given value is correct for day number in ID code.
-    Also, consider leap year and which month has 30 or 31 days.
 
+    Also, consider leap year and which month has 30 or 31 days.
     :param year_number: int
     :param month_number: int
     :param day_number: int
@@ -133,12 +132,11 @@ def check_born_order(born_order: int):
 def check_control_number(id_code: str):
     """
     Check if given value is correct for control number in ID code.
-    Use algorithm made for creating this number.
 
+    Use algorithm made for creating this number.
     :param id_code: string
     :return: boolean
     """
-
     kontroll_nr = int(id_code[10:11])
     list_1 = [i for i in id_code]
     x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
@@ -194,6 +192,7 @@ if __name__ == '__main__':
 def get_data_from_id(id_code: str):
     """
     Get possible information about the person.
+
     Use given ID code and return a short message.
     Follow the template - This is a (gender) born on (DD.MM.YYYY).
 
@@ -217,6 +216,7 @@ def get_data_from_id(id_code: str):
 
     pass
 
+
 def get_gender(gender_number: int):
     """
     Define the gender according to the number from ID code.
@@ -235,6 +235,7 @@ def get_gender(gender_number: int):
 def get_full_year(gender_number: int, year: int):
     """
     Define the 4-digit year when given person was born.
+
     Person gender and year numbers from ID code must help.
     Given year has only two last digits.
 
