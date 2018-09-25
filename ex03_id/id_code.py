@@ -58,7 +58,6 @@ def check_month_number(month_number: int):
     :param month_number: int
     :return: boolean
     """
-
     if month_number <= 12 and month_number != 0:
         return True
     else:
