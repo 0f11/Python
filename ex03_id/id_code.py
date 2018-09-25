@@ -200,15 +200,15 @@ def get_data_from_id(id_code: str):
     :return: str
     """
     year = id_code[1:3]
-    rohkem = 19
-    vahem = 20
-    if int(year) < 50:
-        year = "{}{}".format(vahem, year)
-    elif int(year) >= 50:
-        year = "{}{}".format(rohkem, year)
+    gender_number = id_code[0:1]
+    if gender_number == 1 or 2:
+        year = "{}{}".format(18, year)
+    elif gender_number == 3 or 4:
+        year = "{}{}".format(19, year)
+    elif gender_number == 5 or 6:
+        year = "{}{}".format(20, year)
     day = id_code[5:7]
     month = id_code[3:5]
-    gender_number = id_code[0:1]
     if int(gender_number) % 2 != 0:
         return "This is a Male born on {}.{}.{}".format(day, month, year)
     if int(gender_number) % 2 == 0:
@@ -243,6 +243,15 @@ def get_full_year(gender_number: int, year: int):
     :param year: int
     :return: int
     """
+    if gender_number == 1 or 2:
+        year = "{}{}".format(18, year)
+        return int(year)
+    elif gender_number == 3 or 4:
+        year = "{}{}".format(19, year)
+        return int(year)
+    elif gender_number == 5 or 6:
+        year = "{}{}".format(20, year)
+        return int(year)
     pass
 
 
