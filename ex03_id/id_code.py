@@ -79,10 +79,10 @@ def check_day_number(year_number: int, month_number: int, day_number: int):
     :return: boolean
     """
     if month_number == 2 and day_number <= 29:  # and
-        if check_leap_year(year_number) == True:
+        if check_leap_year(True):
             return True
     if month_number == 2 and day_number <= 28:  # and check_leap_year(year_number) == False:
-        if check_leap_year(year_number) == False:
+        if check_leap_year(False):
             return True
 
     if month_number > 2 and int(month_number) % 2 == 0 and int(month_number) <= 7 and int(day_number) <= 30:
