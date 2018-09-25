@@ -9,7 +9,7 @@ def check_your_id(id_code: str):
     :return: boolean
     """
     str1 = id_code
-    if len(str1) == int(11) and id_code.isdigit() == True:
+    if len(str1) == int(11) and id_code.isdigit():
         return True
     else:
         return False
@@ -80,11 +80,11 @@ def check_day_number(year_number: int, month_number: int, day_number: int):
     :return: boolean
     """
     if month_number == 2 and day_number <= 29:  # and
-        check_leap_year(year_number) == True
-        return True
+        if check_leap_year(year_number) == True:
+            return True
     if month_number == 2 and day_number <= 28:  # and check_leap_year(year_number) == False:
-        check_leap_year(year_number) == False
-        return True
+        if check_leap_year(year_number) == False:
+            return True
 
     if month_number > 2 and int(month_number) % 2 == 0 and int(month_number) <= 7 and int(day_number) <= 30:
         return True
@@ -190,6 +190,7 @@ if __name__ == '__main__':
     print(check_control_number("49808270244"))  # -> True
     print(check_control_number("60109200187"))  # -> False, it must be 6
 
+
 def get_data_from_id(id_code: str):
     """
     Get possible information about the person.
@@ -199,8 +200,20 @@ def get_data_from_id(id_code: str):
     :param id_code: str
     :return: str
     """
+    year = id_code[1:3]
+    rohkem = 19
+    vahem = 20
+    if int(year) < 50:
+        year = "{}{}".format(vahem, year)
+    elif int(year) >= 50:
+        year = "{}{}".format(rohkem, year)
+    day = id_code[5:7]
+    month = id_code[3:5]
     gender_number = id_code[0:1]
-
+    if int(gender_number) % 2 != 0:
+        return "This is a Male born on {}.{}.{}".format(day, month, year)
+    if int(gender_number) % 2 == 0:
+        return "This is a Female born on {}.{}.{}".format(day, month, year)
 
     pass
 
@@ -211,7 +224,7 @@ def get_gender(gender_number: int):
     :param gender_number: int
     :return: str
     """
-    gender_number = id_code[0:1]
+    int(gender_number)
     if gender_number % 2 == 0:
         return "Male"
     if gender_number % 2 != 0:
