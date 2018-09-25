@@ -196,6 +196,8 @@ def get_data_from_id(id_code: str):
     :param id_code: str
     :return: str
     """
+    if check_your_id(id_code) == False:
+        return "Given invalid ID code!"
     year = id_code[1:3]
     gender_number = id_code[0:1]
     if int(gender_number) <= 2:
@@ -222,10 +224,10 @@ def get_gender(gender_number: int):
     :return: str
     """
     if gender_number % 2 == 0:
-        sugu = "Female"
+        sugu = "female"
         return sugu
     if gender_number % 2 != 0:
-        sugu = "Male"
+        sugu = "male"
         return sugu
     pass
 
