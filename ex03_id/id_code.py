@@ -56,9 +56,6 @@ def check_month_number(month_number: int):
     :param month_number: int
     :return: boolean
     """
-    if month_number < 10 and len(str(month_number)) == int(2):
-        str(month_number).lstrip("0")
-    int(month_number)
     if month_number == 0:
         return False
     if month_number <= 12:
@@ -224,11 +221,12 @@ def get_gender(gender_number: int):
     :param gender_number: int
     :return: str
     """
-    int(gender_number)
     if gender_number % 2 == 0:
-        return str("Female")
+        sugu = str("Female")
+        return sugu
     if gender_number % 2 != 0:
-        return str("Male")
+        sugu = str("Male")
+        return sugu
     pass
 
 
