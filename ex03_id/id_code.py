@@ -226,9 +226,9 @@ def get_gender(gender_number: int):
     """
     int(gender_number)
     if gender_number % 2 == 0:
-        return "Male"
-    if gender_number % 2 != 0:
         return "Female"
+    if gender_number % 2 != 0:
+        return "Male"
     pass
 
 
