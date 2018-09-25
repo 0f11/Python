@@ -225,10 +225,13 @@ def get_gender(gender_number: int):
     :return: str
     """
     int(gender_number)
+    x = " "
     if gender_number % 2 == 0:
-        return "Female"
+        x = "Female"
+        return x
     if gender_number % 2 != 0:
-        return "Male"
+        x = "Male"
+        return x
     pass
 
 
