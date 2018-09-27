@@ -1,10 +1,10 @@
-import time
-
 """
 Nomination.py.
 
 Koodijupp inimese nomineerimiseks.
 """
+
+import time
 
 
 def main():
@@ -20,9 +20,7 @@ def main():
 
 
 def ask_name():
-    """
-    :return: name
-    """
+    """:return: name."""
     while True:
         name = input("What is your full name, dear fellow?").strip()
         is_title = name.istitle()
@@ -37,6 +35,7 @@ def ask_name():
 def progress_bar(process_name, seconds):
     """
     Process bar.
+
     :param process_name:
     :param seconds:
     :return:
@@ -57,7 +56,8 @@ def progress_bar(process_name, seconds):
 
 def print_ok():
     """
-    Kui kõik True
+    Kui kõik True.
+
     :return:
     """
     print("Nominee listed.")
