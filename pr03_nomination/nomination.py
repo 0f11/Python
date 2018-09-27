@@ -3,16 +3,26 @@ import time
 """
 Nomination.py.
 
+Koodijupp inimese nomineerimiseks.
 """
 
 
 def main():
-    name = ask_name()
+    """
+    Main funktsioon.
+
+    :param
+    :return:
+    """
+    ask_name()
     progress_bar("Setting up the nominee", 5)
     print_ok()
 
 
 def ask_name():
+    """
+    :return: name
+    """
     while True:
         name = input("What is your full name, dear fellow?").strip()
         is_title = name.istitle()
@@ -25,6 +35,12 @@ def ask_name():
 
 
 def progress_bar(process_name, seconds):
+    """
+    Process bar.
+    :param process_name:
+    :param seconds:
+    :return:
+    """
     cycle_time = seconds / 20
 
     chr_limit = 25
@@ -40,6 +56,10 @@ def progress_bar(process_name, seconds):
 
 
 def print_ok():
+    """
+    Kui kõik True
+    :return:
+    """
     print("Nominee listed.")
 
 
