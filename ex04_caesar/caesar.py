@@ -1,5 +1,6 @@
 """Caesar cipher."""
 
+
 def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
     """
     Encode the given message using the Caesar cipher principle.
