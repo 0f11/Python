@@ -56,21 +56,21 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
         if x1 in alphabet:
             if x1.isupper():
                 alphabet3 = alphabet.index(x1) - shift
-                if alphabet3 > len(str(alphabet)):
+                if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood2 += alphabet[alphabet3]
                 else:
                     kood2 += alphabet[alphabet3]
             elif x1.islower():
                 alphabet3 = alphabet.index(x1) - shift
-                if alphabet3 > len(str(alphabet)):
+                if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood2 += alphabet[alphabet3]
                 else:
                     kood2 += alphabet[alphabet3]
             elif x1.isnumeric():
                 alphabet3 = alphabet.index(x1) - shift
-                if alphabet3 > len(str(alphabet)):
+                if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood2 += alphabet[alphabet3]
                 else:
