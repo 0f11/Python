@@ -12,23 +12,23 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
         shift = shift % 26
     for x1 in message:
         if x1 in alphabet:
-            if x1.isupper():
+            if x1.islower():
                 alphabet3 = alphabet.index(x1) + shift
-                if alphabet3 > len(str(alphabet)):
+                if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood += alphabet[alphabet3]
                 else:
                     kood += alphabet[alphabet3]
-            elif x1.islower():
+            elif x1.isupper():
                 alphabet3 = alphabet.index(x1) + shift
-                if alphabet3 > len(str(alphabet)):
+                if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood += alphabet[alphabet3]
                 else:
                     kood += alphabet[alphabet3]
             elif x1.isnumeric():
                 alphabet3 = alphabet.index(x1) + shift
-                if alphabet3 > len(str(alphabet)):
+                if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood += alphabet[alphabet3]
                 else:
@@ -38,8 +38,6 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
         else:
             kood += x1
     return kood
-
-    pass
 
 
 def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
@@ -84,3 +82,32 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     return kood2
 
     pass
+
+
+if __name__ == "__main__":
+    # simple tests
+    print(encode("zulla", 1))  # ifmmp
+    print(decode("ifmmp", 1))  # hello
+    print(decode("ifmmp", 50))
+    print(encode("hello", 50))
+    print(decode("ifmmp", -3))
+    print(encode("hello", -4))
+    print(decode("ifmmp", 30))
+    print(encode("hello", 27))
+    print(decode("iFMmP", 1))
+    print(encode("HEllO", 1))
+    print(decode("iFM3::134;", 3))
+    print(encode("H::13EllO", 1))
+    # WRITE THE REMAINING EXAMPLES YOURSELF!
+
+    # larger shift
+
+    # negative shift
+
+    # shift > alphabet.length
+
+    # case sensitivity
+
+    # misc symbols (.,:; etc.)
+
+    # ...
