@@ -7,14 +7,25 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :param alphabet: Determines the symbols in use. Defaults to the standard latin alphabet.
     :return: Encoded string.
     """
+    if shift > 26:
+        shift = -26
+    message.lower()
     kood = ""
     for x in message:
         if x.isalpha():
             alphabet = ord(x) + shift
-            if alphabet > ord('z'):
-                alphabet -= 26
-            viimane = chr(alphabet)
-            kood += viimane
+            if x.isupper():
+                if alphabet > ord("Z"):
+                    alphabet -= 26
+                elif alphabet < ord("A"):
+                    alphabet += 26
+            if x.islower():
+                if alphabet > ord("z"):
+                    alphabet -= 26
+                elif alphabet < ord("a"):
+                    alphabet += 26
+            shiffer = chr(alphabet)
+            kood += shiffer
     return kood
 
     pass
@@ -29,15 +40,25 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :param alphabet: Determines the symbols in use. Defaults to the standard latin alphabet.
     :return: Decoded string.
     """
+    if shift > 26:
+        shift = -26
+    message.lower()
     kood2 = ""
     for y in message:
         if y.isalpha():
-            alphabet = ord(y) - shift
-
-        if alphabet > ord('z'):
-            alphabet += 26
-        viimane2 = chr(alphabet)
-        kood2 += viimane2
+            alphabet = ord(y) + shift
+            if y.isupper():
+                if alphabet > ord("Z"):
+                    alphabet -= 26
+                elif alphabet < ord("A"):
+                    alphabet += 26
+            if y.islower():
+                if alphabet > ord("z"):
+                    alphabet -= 26
+                elif alphabet < ord("a"):
+                    alphabet += 26
+            shiffer2 = chr(alphabet)
+            kood2 += shiffer2
     return kood2
     pass
 
