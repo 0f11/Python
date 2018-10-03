@@ -44,7 +44,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     kood2 = ""
     for y in message:
         if y.isalpha():
-            alphabet = ord(y) + shift
+            alphabet = ord(y) - shift
             if y.isupper():
                 if alphabet > ord("Z"):
                     alphabet -= 26
