@@ -1,6 +1,3 @@
-"""Caesar cipher."""
-
-
 def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
     """
     Encode the given message using the Caesar cipher principle.
@@ -13,7 +10,6 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     kood = ""
     if shift >= 26 or shift <= -26:
         shift = shift % 26
-    message = message.lower()
     for x1 in message:
         if x1 in alphabet:
             if x1.islower() or x1.isupper() or x1.isnumeric() or x1.isprintable():
@@ -42,7 +38,6 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     kood2 = ""
     if shift >= 26 or shift <= -26:
         shift = shift % 26
-    message = message.lower()
     for x1 in message:
         if x1 in alphabet:
             if x1.isupper() or x1.islower() or x1.isnumeric() or x1.isprintable():
@@ -63,7 +58,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("MAkera", -27, "ax"))  # ifmmp
+    print(encode("MA€kera", -27, "ax"))  # ifmmp
     print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
     print(decode("ifmmp", 1))  # hello
     """
