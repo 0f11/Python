@@ -11,17 +11,21 @@ def encode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQ
     :return: Encoded string.
     """
     kood = ""
-    if shift >= 52 or shift <= -52:
+    if shift >= 52 or shift <= (-52):
         shift = shift % 52
     for x1 in message:
         if x1 in alphabet:
-            if x1.islower() or x1.isupper() or x1.isnumeric() or x1.isprintable():
-                alphabet3 = alphabet.index(x1) + (shift * 2)
+            if x1.islower() or x1.isupper():
+                alphabet3 = alphabet.index(x1) + shift * 2
                 if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood += alphabet[alphabet3]
+                elif x1.isnumeric():
+                    alphabet3 = alphabet.index(x1) + shift
+                    kood += alphabet[alphabet3]
                 else:
                     kood += alphabet[alphabet3]
+
             else:
                 kood += x1
         else:
@@ -43,10 +47,13 @@ def decode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQ
         shift = shift % 52
     for x1 in message:
         if x1 in alphabet:
-            if x1.isupper() or x1.islower() or x1.isnumeric() or x1.isprintable():
+            if x1.isupper() or x1.islower():
                 alphabet3 = alphabet.index(x1) - (shift * 2)
                 if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
+                elif x1.isnumeric():
+                    alphabet3 = alphabet.index(x1) - shift
                     kood2 += alphabet[alphabet3]
                 else:
                     kood2 += alphabet[alphabet3]
@@ -61,8 +68,8 @@ def decode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQ
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("maakera", 1, "ax"))  # ifmmp
-    print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
+    print(encode("hello", 1))  # ifmmp
+    print(encode("$%dSs¤324D#1", 1, ")(/S&%¤#"))  # $¤dSs#324D)1
     print(decode("ifmmp", 1))  # hello
     """
     print(decode("ifmmp", 50))
