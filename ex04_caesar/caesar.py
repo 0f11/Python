@@ -8,9 +8,9 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Encoded string.
     """
     kood = ""
-    if shift > 26:
+    if shift >= 26:
         shift = shift % 26
-    if shift < -26:
+    if shift <= -26:
         shift = shift % -26
     for x1 in message:
         if x1 in alphabet:
@@ -59,9 +59,9 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Decoded string.
     """
     kood2 = ""
-    if shift > 26:
+    if shift >= 26:
         shift = shift % 26
-    if shift < -26:
+    if shift <= -26:
         shift = shift % -26
     for x1 in message:
         if x1 in alphabet:
@@ -104,7 +104,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("maakera", -26))  # ifmmp
+    print(encode("maakera", -26, "ax"))  # ifmmp
     print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
     """
     print(decode("ifmmp", 1))  # hello
