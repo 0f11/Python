@@ -8,7 +8,7 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Encoded string.
     """
     if shift > 26:
-        shift = -26
+        shift = shift % 26
     kood = ""
     for x in message:
         if x.isalpha():
@@ -40,7 +40,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Decoded string.
     """
     if shift > 26:
-        shift = -26
+        shift = shift % 26
     kood2 = ""
     for y in message:
         if y.isalpha():
@@ -58,12 +58,13 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
             shiffer2 = chr(alphabet)
             kood2 += shiffer2
     return kood2
+
     pass
 
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("HELLO", 1))  # ifmmp
+    print(encode("Hello", 1))  # ifmmp
     print(decode("ifmmp", 1))  # hello
     print(decode("ifmmp", 50))
     print(encode("hello", 50))
