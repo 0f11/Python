@@ -1,7 +1,7 @@
 """Caesar cipher."""
 
 
-def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
+def encode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz") -> str:
     """
     Encode the given message using the Caesar cipher principle.
 
@@ -11,12 +11,12 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Encoded string.
     """
     kood = ""
-    if shift >= 26 or shift <= -26:
-        shift = shift % 26
+    if shift >= 52 or shift <= -52:
+        shift = shift % 52
     for x1 in message:
         if x1 in alphabet:
             if x1.islower() or x1.isupper() or x1.isnumeric() or x1.isprintable():
-                alphabet3 = alphabet.index(x1) + shift
+                alphabet3 = alphabet.index(x1) + (shift * 2)
                 if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood += alphabet[alphabet3]
@@ -29,7 +29,7 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     return kood
 
 
-def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
+def decode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz") -> str:
     """
     Decode the given message already encoded with the caesar cipher principle.
 
@@ -39,12 +39,12 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Decoded string.
     """
     kood2 = ""
-    if shift >= 26 or shift <= -26:
-        shift = shift % 26
+    if shift >= 52 or shift <= -52:
+        shift = shift % 52
     for x1 in message:
         if x1 in alphabet:
             if x1.isupper() or x1.islower() or x1.isnumeric() or x1.isprintable():
-                alphabet3 = alphabet.index(x1) - shift
+                alphabet3 = alphabet.index(x1) - (shift * 2)
                 if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
                     kood2 += alphabet[alphabet3]
@@ -61,7 +61,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("MA€kera", -27, "ax"))  # ifmmp
+    print(encode("maakera", 1, "ax"))  # ifmmp
     print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
     print(decode("ifmmp", 1))  # hello
     """
