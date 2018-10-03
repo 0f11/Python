@@ -13,28 +13,7 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
     for x1 in message:
         if x1 in alphabet:
-            if x1.islower():
-                alphabet3 = alphabet.index(x1) + shift
-                if alphabet3 >= len(str(alphabet)):
-                    alphabet3 = alphabet3 % len(str(alphabet))
-                    kood += alphabet[alphabet3]
-                else:
-                    kood += alphabet[alphabet3]
-            elif x1.isupper():
-                alphabet3 = alphabet.index(x1) + shift
-                if alphabet3 >= len(str(alphabet)):
-                    alphabet3 = alphabet3 % len(str(alphabet))
-                    kood += alphabet[alphabet3]
-                else:
-                    kood += alphabet[alphabet3]
-            elif x1.isnumeric():
-                alphabet3 = alphabet.index(x1) + shift
-                if alphabet3 >= len(str(alphabet)):
-                    alphabet3 = alphabet3 % len(str(alphabet))
-                    kood += alphabet[alphabet3]
-                else:
-                    kood += alphabet[alphabet3]
-            elif x1.isprintable():
+            if x1.islower() or x1.isupper() or x1.isnumeric() or x1.isprintable():
                 alphabet3 = alphabet.index(x1) + shift
                 if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
@@ -62,28 +41,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
         shift = shift % 26
     for x1 in message:
         if x1 in alphabet:
-            if x1.isupper():
-                alphabet3 = alphabet.index(x1) - shift
-                if alphabet3 >= len(str(alphabet)):
-                    alphabet3 = alphabet3 % len(str(alphabet))
-                    kood2 += alphabet[alphabet3]
-                else:
-                    kood2 += alphabet[alphabet3]
-            elif x1.islower():
-                alphabet3 = alphabet.index(x1) - shift
-                if alphabet3 >= len(str(alphabet)):
-                    alphabet3 = alphabet3 % len(str(alphabet))
-                    kood2 += alphabet[alphabet3]
-                else:
-                    kood2 += alphabet[alphabet3]
-            elif x1.isnumeric():
-                alphabet3 = alphabet.index(x1) - shift
-                if alphabet3 >= len(str(alphabet)):
-                    alphabet3 = alphabet3 % len(str(alphabet))
-                    kood2 += alphabet[alphabet3]
-                else:
-                    kood2 += alphabet[alphabet3]
-            elif x1.isprintable():
+            if x1.isupper() or x1.islower() or x1.isnumeric() or x1.isprintable():
                 alphabet3 = alphabet.index(x1) - shift
                 if alphabet3 >= len(str(alphabet)):
                     alphabet3 = alphabet3 % len(str(alphabet))
@@ -103,8 +61,8 @@ if __name__ == "__main__":
     # simple tests
     print(encode("maakera", -27, "ax"))  # ifmmp
     print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
-    """
     print(decode("ifmmp", 1))  # hello
+    """
     print(decode("ifmmp", 50))
     print(encode("hello", 50))
     print(decode("ifmmp", -3))
