@@ -25,6 +25,8 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
                     alphabet += 26
             shiffer = chr(alphabet)
             kood += shiffer
+        else:
+            kood += x
     return kood
 
     pass
@@ -57,6 +59,9 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
                     alphabet += 26
             shiffer2 = chr(alphabet)
             kood2 += shiffer2
+        else:
+            kood2 += y
+
     return kood2
 
     pass
@@ -64,7 +69,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("Hello", 1))  # ifmmp
+    print(encode("Hello", 1, "hse"))# ifmmp
     print(decode("ifmmp", 1))  # hello
     print(decode("ifmmp", 50))
     print(encode("hello", 50))
