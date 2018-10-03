@@ -86,7 +86,8 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("zulla", 1))  # ifmmp
+    print(encode("hello", 1))  # ifmmp
+    """
     print(decode("ifmmp", 1))  # hello
     print(decode("ifmmp", 50))
     print(encode("hello", 50))
@@ -111,3 +112,4 @@ if __name__ == "__main__":
     # misc symbols (.,:; etc.)
 
     # ...
+    """
