@@ -35,7 +35,7 @@ def encode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQ
 
 def decode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz") -> str:
     """
-    Decode the given message already encoded with the caesar cipher principle.
+    Decode the given message alreadyy encoded with the caesar cipher principle.
 
     :param message: The string to be decoded.
     :param shift: Determines the amount of symbols to be shifted by.
