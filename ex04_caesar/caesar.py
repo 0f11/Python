@@ -33,6 +33,13 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
                     kood += alphabet[alphabet3]
                 else:
                     kood += alphabet[alphabet3]
+            elif x1.isprintable():
+                alphabet3 = alphabet.index(x1) + shift
+                if alphabet3 >= len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood += alphabet[alphabet3]
+                else:
+                    kood += alphabet[alphabet3]
             else:
                 kood += x1
         else:
@@ -75,6 +82,13 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
                     kood2 += alphabet[alphabet3]
                 else:
                     kood2 += alphabet[alphabet3]
+            elif x1.isprintable():
+                alphabet3 = alphabet.index(x1) - shift
+                if alphabet3 >= len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
+                else:
+                    kood2 += alphabet[alphabet3]
             else:
                 kood2 += x1
         else:
@@ -86,7 +100,8 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("hello", 1))  # ifmmp
+    print(encode("he,llo", 1))  # ifmmp
+    print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
     """
     print(decode("ifmmp", 1))  # hello
     print(decode("ifmmp", 50))
