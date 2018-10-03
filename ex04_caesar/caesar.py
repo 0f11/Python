@@ -7,29 +7,37 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :param alphabet: Determines the symbols in use. Defaults to the standard latin alphabet.
     :return: Encoded string.
     """
+    kood = ""
     if shift > 26:
         shift = shift % 26
-    kood = ""
-    for x in message:
-        if x.isalpha():
-            alphabet = ord(x) + shift
-            if x.isupper():
-                if alphabet > ord("Z"):
-                    alphabet -= 26
-                elif alphabet < ord("A"):
-                    alphabet += 26
-            if x.islower():
-                if alphabet > ord("z"):
-                    alphabet -= 26
-                elif alphabet < ord("a"):
-                    alphabet += 26
-            shiffer = chr(alphabet)
-            kood += shiffer
+    for x1 in message:
+        if x1 in alphabet:
+            if x1.isupper():
+                alphabet3 = alphabet.index(x1) + shift
+                if alphabet3 > len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood += alphabet[alphabet3]
+                else:
+                    kood += alphabet[alphabet3]
+            elif x1.islower():
+                alphabet3 = alphabet.index(x1) + shift
+                if alphabet3 > len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood += alphabet[alphabet3]
+                else:
+                    kood += alphabet[alphabet3]
+            elif x1.isnumeric():
+                alphabet3 = alphabet.index(x1) + shift
+                if alphabet3 > len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood += alphabet[alphabet3]
+                else:
+                    kood += alphabet[alphabet3]
+            else:
+                kood += x1
         else:
-            kood += x
+            kood += x1
     return kood
-
-    pass
 
 
 def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
@@ -41,27 +49,36 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :param alphabet: Determines the symbols in use. Defaults to the standard latin alphabet.
     :return: Decoded string.
     """
+    kood2 = ""
     if shift > 26:
         shift = shift % 26
-    kood2 = ""
-    for y in message:
-        if y.isalpha():
-            alphabet = ord(y) - shift
-            if y.isupper():
-                if alphabet > ord("Z"):
-                    alphabet -= 26
-                elif alphabet < ord("A"):
-                    alphabet += 26
-            if y.islower():
-                if alphabet > ord("z"):
-                    alphabet -= 26
-                elif alphabet < ord("a"):
-                    alphabet += 26
-            shiffer2 = chr(alphabet)
-            kood2 += shiffer2
+    for x1 in message:
+        if x1 in alphabet:
+            if x1.isupper():
+                alphabet3 = alphabet.index(x1) - shift
+                if alphabet3 > len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
+                else:
+                    kood2 += alphabet[alphabet3]
+            elif x1.islower():
+                alphabet3 = alphabet.index(x1) - shift
+                if alphabet3 > len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
+                else:
+                    kood2 += alphabet[alphabet3]
+            elif x1.isnumeric():
+                alphabet3 = alphabet.index(x1) - shift
+                if alphabet3 > len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
+                else:
+                    kood2 += alphabet[alphabet3]
+            else:
+                kood2 += x1
         else:
-            kood2 += y
-
+            kood2 += x1
     return kood2
 
     pass
@@ -69,7 +86,7 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("Hello", 1, "hse"))# ifmmp
+    print(encode("hello", 1))  # ifmmp
     print(decode("ifmmp", 1))  # hello
     print(decode("ifmmp", 50))
     print(encode("hello", 50))
