@@ -14,18 +14,14 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     if shift >= 26 or shift <= -26:
         shift = shift % 26
     for x1 in message:
-        if x1.isalpha():
-            x1 = x1.lower()
-            if x1 in alphabet:
-                if x1.isalnum() or x1.isprintable():
-                    alphabet3 = alphabet.index(x1) + shift
-                    if alphabet3 >= len(str(alphabet)):
-                        alphabet3 = alphabet3 % len(str(alphabet))
-                        kood += alphabet[alphabet3]
-                    else:
-                        kood += alphabet[alphabet3]
+        if x1 in alphabet:
+            if x1.isalnum() or x1.isprintable():
+                alphabet3 = alphabet.index(x1) + shift
+                if alphabet3 >= len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood += alphabet[alphabet3]
                 else:
-                    kood += x1
+                    kood += alphabet[alphabet3]
             else:
                 kood += x1
         else:
@@ -46,18 +42,14 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     if shift >= 26 or shift <= -26:
         shift = shift % 26
     for x1 in message:
-        if x1.isalpha():
-            x1 = x1.lower()
-            if x1 in alphabet:
-                if x1.isalnum() or x1.isprintable():
-                    alphabet3 = alphabet.index(x1) - shift
-                    if alphabet3 >= len(str(alphabet)):
-                        alphabet3 = alphabet3 % len(str(alphabet))
-                        kood2 += alphabet[alphabet3]
-                    else:
-                        kood2 += alphabet[alphabet3]
+        if x1 in alphabet:
+            if x1.isalnum() or x1.isprintable():
+                alphabet3 = alphabet.index(x1) - shift
+                if alphabet3 >= len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
                 else:
-                    kood2 += x1
+                    kood2 += alphabet[alphabet3]
             else:
                 kood2 += x1
         else:
