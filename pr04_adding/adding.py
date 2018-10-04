@@ -88,4 +88,4 @@ if __name__ == '__main__':
     print(add_list_elements([0, 0, 0, 0, 0, 0, 1, 2, 5, 6]))  # -> [6, 5, 2, 1, 0]
     print(add_list_elements([0, 0, 2, 0, 3, 4, 1, 2, 5, 6]))
     #print(add_list_elements([-1, -2, -5, -50, -14]))  # -> [-16, -51]
-    print(add_list_elements([1]))  # -> []
+    #print(add_list_elements([1]))  # -> []
