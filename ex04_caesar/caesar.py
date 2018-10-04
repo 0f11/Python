@@ -13,6 +13,8 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     kood = ""
     if shift >= 26 or shift <= -26:
         shift = shift % 26
+    if alphabet.isupper():
+        alphabet = alphabet.lower()
     for x1 in message:
         if x1 in alphabet:
             if x1.isalnum() or x1.isprintable():
@@ -41,6 +43,8 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     kood2 = ""
     if shift >= 26 or shift <= -26:
         shift = shift % 26
+    if alphabet.isupper():
+        alphabet = alphabet.lower()
     for x1 in message:
         if x1 in alphabet:
             if x1.isalnum() or x1.isprintable():
