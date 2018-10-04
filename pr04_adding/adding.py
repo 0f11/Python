@@ -57,23 +57,28 @@ def add_list_elements(int_list):
     """
     sort_list([int_list])
     new_int_list = []
-    while len([int_list]) <= 2 and len([int_list]) % 2 >= 1:
+    while len([int_list]) <= 2 and len([int_list]) % 2 >= 1 and get_max_element(int_list) != None and get_min_element(
+            int_list) != None:
         if len([int_list]) % 2 == 0:
             break
         uus1 = get_max_element(int_list)
         uus2 = get_min_element(int_list)
         uus3 = int(uus1) + int(uus2)
         new_int_list.append(uus3)
-        print(int_list)
-        del int_list[0]
-        del int_list[-1]
-        print(new_int_list)
+        #print(int_list)
+        if len(int_list) >= 1:
+            del int_list[0]
+        if len(int_list) >= 1:
+            del int_list[-1]
+        else:
+            break
 
-    return [new_int_list]
+    return sorted(new_int_list, reverse=True)
     pass
 
 
 if __name__ == '__main__':
     print(add_list_elements([0, 0, 0, 0, 0, 0, 1, 2, 5, 6]))  # -> [6, 5, 2, 1, 0]
-    #print(add_list_elements([-1, -2, -5, -50, -14]))  # -> [-16, -51]
-    #print(add_list_elements([1]))  # -> []
+    print(add_list_elements([0, 0, 2, 0, 3, 4, 1, 2, 5, 6]))
+    print(add_list_elements([-1, -2, -5, -50, -14]))  # -> [-16, -51]
+    print(add_list_elements([1]))  # -> []
