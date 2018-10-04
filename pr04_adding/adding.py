@@ -57,30 +57,31 @@ def add_list_elements(int_list):
     """
     sort_list([int_list])
     new_int_list = []
+    print(int_list)
     while get_max_element(int_list) is not None and get_min_element(int_list) is not None:
-        if len(int_list) % 2 == 0:
+        if len(int_list) % 2 == 0 and len(int_list) > 1:
             uus1 = get_max_element(int_list)
             uus2 = get_min_element(int_list)
-            uus3 = int(uus1) + int(uus2)
+            print(int_list)
+            uus3 = uus1 + uus2
             new_int_list.append(uus3)
-        if len(int_list) % 3 == 0:
-            uus1 = get_max_element(int_list)
-            uus2 = get_min_element(int_list)
-            uus3 = int(uus1) + int(uus2)
-            new_int_list.append(uus3)
-        if len(int_list) >= 1:
             del int_list[0]
-        if len(int_list) >= 1:
             del int_list[-1]
-        else:
-            break
+        if len(int_list) % 3 == 0 and len(int_list) > 1:
+            uus1 = get_max_element(int_list)
+            uus2 = get_min_element(int_list)
+            print(int_list)
+            uus3 = int(uus1) + int(uus2)
+            new_int_list.append(uus3)
+            del int_list[0]
+            del int_list[-1]
 
     return sorted(new_int_list, reverse=True)
     pass
 
 
 if __name__ == '__main__':
-    print(add_list_elements([0, 0, 0, 0, 0, 0, 1, 2, 5, 6]))  # -> [6, 5, 2, 1, 0]
-    print(add_list_elements([0, 0, 2, 0, 3, 4, 1, 2, 5, 6]))
+    #print(add_list_elements([0, 0, 0, 0, 0, 0, 1, 2, 5, 6]))  # -> [6, 5, 2, 1, 0]
+    #print(add_list_elements([0, 0, 2, 0, 3, 4, 1, 2, 5, 6]))
     print(add_list_elements([-1, -2, -5, -50, -14]))  # -> [-16, -51]
-    print(add_list_elements([1]))  # -> []
+    #print(add_list_elements([1]))  # -> []
