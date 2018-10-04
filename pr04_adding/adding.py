@@ -39,7 +39,8 @@ def sort_list(int_list):
     :param int_list: List of integers
     :return: Sorted list of integers
     """
-    return sorted([int_list], reverse=True)
+
+    return sorted(int_list, reverse=True)
     pass
 
 
@@ -55,22 +56,25 @@ def add_list_elements(int_list):
     :param int_list: List of integers
     :return: Integer list of sums sorted in descending order.
     """
-    sort_list([int_list])
     new_int_list = []
-    print(int_list)
+
+    sort_list(int_list)
     while get_max_element(int_list) is not None and get_min_element(int_list) is not None:
+
         if len(int_list) % 2 == 0 and len(int_list) > 1:
+
             uus1 = get_max_element(int_list)
             uus2 = get_min_element(int_list)
-            print(int_list)
+
             uus3 = uus1 + uus2
             new_int_list.append(uus3)
             del int_list[0]
             del int_list[-1]
-        if len(int_list) % 3 == 0 and len(int_list) > 1:
+        if len(int_list) % 2 != 0 and len(int_list) > 1:
+            sort_list(int_list)
             uus1 = get_max_element(int_list)
             uus2 = get_min_element(int_list)
-            print(int_list)
+
             uus3 = int(uus1) + int(uus2)
             new_int_list.append(uus3)
             del int_list[0]
@@ -81,7 +85,7 @@ def add_list_elements(int_list):
 
 
 if __name__ == '__main__':
-    #print(add_list_elements([0, 0, 0, 0, 0, 0, 1, 2, 5, 6]))  # -> [6, 5, 2, 1, 0]
-    #print(add_list_elements([0, 0, 2, 0, 3, 4, 1, 2, 5, 6]))
-    print(add_list_elements([-1, -2, -5, -50, -14]))  # -> [-16, -51]
-    #print(add_list_elements([1]))  # -> []
+    print(add_list_elements([0, 0, 0, 0, 0, 0, 1, 2, 5, 6]))  # -> [6, 5, 2, 1, 0]
+    print(add_list_elements([0, 0, 2, 0, 3, 4, 1, 2, 5, 6]))
+    #print(add_list_elements([-1, -2, -5, -50, -14]))  # -> [-16, -51]
+    print(add_list_elements([1]))  # -> []
