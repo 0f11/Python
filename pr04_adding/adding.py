@@ -39,7 +39,6 @@ def sort_list(int_list):
     :param int_list: List of integers
     :return: Sorted list of integers
     """
-    print(int_list)
     return sorted(int_list, reverse=True)
     pass
 
@@ -62,10 +61,8 @@ def add_list_elements(int_list):
     while get_max_element(int_list) is not None and get_min_element(int_list) is not None:
         sort_list(int_list)
         if len(int_list) % 2 == 0 and len(int_list) > 1:
-
             uus1 = get_max_element(int_list)
             uus2 = get_min_element(int_list)
-
             uus3 = uus1 + uus2
             new_int_list.append(uus3)
             del int_list[0]
@@ -74,7 +71,6 @@ def add_list_elements(int_list):
             sort_list(int_list)
             uus1 = get_max_element(int_list)
             uus2 = get_min_element(int_list)
-            print(int_list)
             uus3 = int(uus1) + int(uus2)
             new_int_list.append(uus3)
             del int_list[0]
