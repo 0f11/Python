@@ -25,6 +25,8 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
     if (jump_distance1 <= jump_distance2 and sleep1 == sleep2) or (pos1 < pos2 and k1 < k2) or (
             pos1 > pos2 and k1 > k2):
         return -1
+    if jump_distance1 <= jump_distance2 and sleep1 > sleep1 and p1 < p2:
+        return -1
     if k1 == k2 and p1 != p2:
         return -1
     if p1 == p2:
