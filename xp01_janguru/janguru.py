@@ -6,21 +6,28 @@ Olen kulutanu sellele juba 3 nädalat, vaadates sellele ajale tagasi, ei kahetse
 
 
 def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
-    pos_x1 = pos1 + jump_distance1
-    pos_x2 = pos2 + jump_distance2
-    x = 0
-    if pos2 - pos1 == 0 and jump_distance2 - jump_distance1 == 0:
-        return print("-1")
-    if pos1 <= pos2 and jump_distance1 <= jump_distance2 and (jump_distance1 / sleep1) < (jump_distance2 / sleep2):
-        return print("-1")
-    if jump_distance1 / sleep1 == jump_distance2 / sleep2:
-        return print("-1")
-    while pos_x1 != pos_x2:
-        x = x + 1
-        if x % sleep1 == 0:
-            pos_x1 = pos_x1 + jump_distance1
-        if x % sleep2 == 0:
-            pos_x2 = pos_x2 + jump_distance2
-        if pos_x1 == pos_x2:
-            break
-    print(f"{pos_x2}")
+    current_time = 0
+    p1 = pos1
+    p2 = pos2
+    while p1 != p2:
+        current_time = current_time + 1
+        k1 = jump_distance1 / sleep1
+        k2 = jump_distance2 / sleep2
+        if (jump_distance1 == jump_distance2 and sleep1 == sleep2) or (pos1 < pos2 and k1 < k2) or (
+                pos1 > pos2 and k1 > k2):
+            return -1
+        if current_time % sleep1 == 0:
+            p1 = p1 + jump_distance1
+        if current_time % sleep2 == 0:
+            p2 = p2 + jump_distance2
+        if p1 == p2:
+            return p1
+
+
+if __name__ == "__main__":
+    print(meet_me(1, 2, 1, 2, 1, 1))
+    print(meet_me(1, 2, 3, 4, 5, 5))
+    print(meet_me(10, 7, 7, 5, 8, 6))
+    print(meet_me(100, 7, 4, 300, 8, 6))
+    print(meet_me(1, 7, 1, 15, 5, 1))
+    print(meet_me(0, 1, 1, 1, 1, 1))
