@@ -25,7 +25,7 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
     if (jump_distance1 <= jump_distance2 and sleep1 == sleep2) or (pos1 < pos2 and k1 < k2) or (
             pos1 > pos2 and k1 > k2):
         return -1
-    if p2 - p1 <= 0 and jump_distance2 - jump_distance1 <= 0:
+    if p2 - p1 <= 0 and jump_distance2 - jump_distance1 <= 0 or k1 == k2 and p1 != p2:
         return -1
     if p1 == p2:
         return p1
@@ -40,7 +40,7 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
 
 
 if __name__ == "__main__":
-    print(meet_me(1, 2, 2, 1, 4, 4))
+    print(meet_me(1, 99, 99, 80, 10, 10))
     print(meet_me(1, 2, 3, 4, 5, 5))
     print(meet_me(10, 7, 7, 5, 8, 6))
     print(meet_me(100, 7, 4, 300, 8, 6))
