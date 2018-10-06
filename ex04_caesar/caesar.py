@@ -1,4 +1,7 @@
-def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
+"""Caesar cipher."""
+
+
+def encode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz") -> str:
     """
     Encode the given message using the Caesar cipher principle.
 
@@ -8,19 +11,26 @@ def encode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Encoded string.
     """
     kood = ""
-    for x in message:
-        if x.isalpha():
-            alphabet = ord(x) + shift
-            if alphabet > ord('z'):
-                alphabet -= 26
-            viimane = chr(alphabet)
-            kood += viimane
+    if shift >= 52 or shift <= -52:
+        shift = shift % 52
+    for x1 in message:
+        if x1 in alphabet:
+            if x1.isprintable():
+                if len(str(alphabet)) > 26:
+                    alphabet3 = alphabet.find(x1) + shift * 2
+                else:
+                    alphabet3 = alphabet.find(x1) + shift
+                if abs(alphabet3) >= len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood += alphabet[alphabet3]
+                else:
+                    kood += alphabet[alphabet3]
+        else:
+            kood += x1
     return kood
 
-    pass
 
-
-def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> str:
+def decode(message: str, shift: int, alphabet="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz") -> str:
     """
     Decode the given message already encoded with the caesar cipher principle.
 
@@ -30,23 +40,37 @@ def decode(message: str, shift: int, alphabet="abcdefghijklmnopqrstuvwxyz") -> s
     :return: Decoded string.
     """
     kood2 = ""
-    for y in message:
-        if y.isalpha():
-            alphabet = ord(y) - shift
+    if shift >= 52 or shift <= -52:
+        shift = shift % 52
+    for x1 in message:
+        if x1 in alphabet:
+            if x1.isprintable():
+                if len(str(alphabet)) > 26:
+                    alphabet3 = alphabet.find(x1) - shift * 2
+                else:
+                    alphabet3 = alphabet.find(x1) - shift
+                if abs(alphabet3) >= len(str(alphabet)):
+                    alphabet3 = alphabet3 % len(str(alphabet))
+                    kood2 += alphabet[alphabet3]
+                else:
+                    kood2 += alphabet[alphabet3]
 
-        if alphabet > ord('z'):
-            alphabet += 26
-        viimane2 = chr(alphabet)
-        kood2 += viimane2
+        else:
+            kood2 += x1
     return kood2
     pass
 
 
 if __name__ == "__main__":
     # simple tests
-    print(encode("hello", 1))  # ifmmp
-    print(decode("ifmmp", 1))  # hello
-    print(decode("ifmmp", 50))
+
+    print(encode("HeLLO", 1))
+    print(encode("maakera", 11, "ax"))  # ifmmp
+    print(encode("$%dSs¤324D#1", 1, ")(/&%¤#"))  # $¤dSs#324D)1
+    print(decode("iFmmp", 1))  # hello
+
+    print(decode("ifmmp", 51))
+
     print(encode("hello", 50))
     print(decode("ifmmp", -3))
     print(encode("hello", -4))
@@ -56,16 +80,3 @@ if __name__ == "__main__":
     print(encode("HEllO", 1))
     print(decode("iFM3::134;", 3))
     print(encode("H::13EllO", 1))
-    # WRITE THE REMAINING EXAMPLES YOURSELF!
-
-    # larger shift
-
-    # negative shift
-
-    # shift > alphabet.length
-
-    # case sensitivity
-
-    # misc symbols (.,:; etc.)
-
-    # ...
