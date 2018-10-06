@@ -1,7 +1,7 @@
 """
 janguru.py.
 
-Olen kulutanu sellele juba 3 nädalat, vaadates sellele ajale tagasi, ei kahetse ma miskit.
+Olen kulutanu sellele juba 3 nädalat,, vaadates sellele ajale tagasi, ei kahetse ma miskit.
 """
 
 
