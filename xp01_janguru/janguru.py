@@ -6,6 +6,17 @@ Olen kulutanu sellele juba 3 nädalat,, vaadates sellele ajale tagasi, ei kahets
 
 
 def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
+    """
+    Lugu kahe jänese kohtumisest.
+
+    :param pos1:
+    :param jump_distance1:
+    :param sleep1:
+    :param pos2:
+    :param jump_distance2:
+    :param sleep2:
+    :return:
+    """
     current_time = 0
     p1 = pos1
     p2 = pos2
