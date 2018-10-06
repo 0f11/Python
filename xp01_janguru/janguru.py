@@ -17,7 +17,7 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
     :param sleep2:
     :return:
     """
-    current_time = 0
+    time = 0
     p1 = pos1
     p2 = pos2
     k1 = jump_distance1 / sleep1
@@ -30,10 +30,10 @@ def meet_me(pos1, jump_distance1, sleep1, pos2, jump_distance2, sleep2):
     if p1 == p2:
         return p1
     while p1 != p2:
-        current_time = current_time + 1
-        if current_time % sleep1 == 0:
+        time = time + 1
+        if time % sleep1 == 0:
             p1 = p1 + jump_distance1
-        if current_time % sleep2 == 0:
+        if time % sleep2 == 0:
             p2 = p2 + jump_distance2
         if p1 == p2:
             return p1
