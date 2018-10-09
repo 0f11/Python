@@ -116,7 +116,7 @@ def find_most_popular_hobby(file):
 
 def find_least_popular_hobby(file):
     """
-    Find the least popular hobby.
+    Find the least popular hobby..
 
     :param file: original file path
     :return: list
