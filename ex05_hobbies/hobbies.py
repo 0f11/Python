@@ -10,7 +10,6 @@ def create_list_from_file(file):
     :param file: original file path
     :return: list of lines
     """
-
     data = open(file, "r")
 
     list1 = data.readlines()
@@ -27,7 +26,6 @@ def create_dictionary(file):
     :param file: original file path
     :return: dict
     """
-
     list1 = create_list_from_file(file)
     hobbies = {}
     for element in list1:
