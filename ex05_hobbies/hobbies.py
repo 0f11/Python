@@ -1,8 +1,5 @@
 """hobbies.py."""
 import csv
-from collections import Counter
-from itertools import takewhile
-
 
 def create_list_from_file(file):
     """
@@ -106,6 +103,8 @@ def find_most_popular_hobby(file):
     :param file: original file path
     :return: list
     """
+    from collections import Counter
+
     dict1 = create_dictionary(file)
     c = Counter()
     for d in dict1.values():
@@ -121,12 +120,13 @@ def find_least_popular_hobby(file):
     :param file: original file path
     :return: list
     """
+    from collections import Counter
     dict1 = create_dictionary(file)
     c = Counter()
     for d in dict1.values():
         c += Counter(d)
-    popular = c.most_common(0)[0][1]
-    return list(takewhile(lambda x: x[1] == popular, c.most_common()))
+
+    return Counter(.values()).most_common()[0][0]
 
 
 def write_corrected_database(file, file_to_write):
@@ -171,5 +171,5 @@ if __name__ == '__main__':
     # print("Check if the most popular hobby(ies) is(are) correct")
     print(find_most_popular_hobby("hobbies_database.txt"))  # -> ['gaming', 'sport', 'football']
     # print("Check if the least popular hobby(ies) is(are) correct")
-    # print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
+    print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
     # write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
