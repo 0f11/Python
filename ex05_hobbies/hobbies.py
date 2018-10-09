@@ -144,10 +144,14 @@ def write_corrected_database(file, file_to_write):
         writer.writerow([name, hobbies])
 
         dict1 = create_dictionary(file)
+        list1 = []
 
-        for k, v in dict1.items():
-            string_hobbies = "-".join(element for element in v)
-            writer.writerow([k, string_hobbies])
+        for key in dict1:
+            list1.append(key)
+
+        for element in sorted(list1):
+            string_hobbies = "-".join(el for el in sorted(dict1[element]))
+            writer.writerow([element, string_hobbies])
 
 
 # These examples are based on a given text file from the exercise.
@@ -173,4 +177,4 @@ if __name__ == '__main__':
     print(find_most_popular_hobby("hobbies_database.txt"))  # -> ['gaming', 'sport', 'football']
     # print("Check if the least popular hobby(ies) is(are) correct")
     print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
-    # write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
+    write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
