@@ -126,7 +126,7 @@ def find_least_popular_hobby(file):
     for d in dict1.values():
         c += Counter(d)
 
-    return Counter(.values()).most_common()[0][0]
+    return [c.most_common(1)[0][0]]
 
 
 def write_corrected_database(file, file_to_write):
