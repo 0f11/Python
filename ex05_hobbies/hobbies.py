@@ -1,6 +1,7 @@
 """hobbies.py."""
 import csv
-
+from collections import Counter
+from itertools import takewhile
 
 
 def create_list_from_file(file):
@@ -105,8 +106,6 @@ def find_most_popular_hobby(file):
     :param file: original file path
     :return: list
     """
-    from collections import Counter
-    from itertools import takewhile
 
     dict1 = create_dictionary(file)
     c = Counter()
@@ -123,8 +122,6 @@ def find_least_popular_hobby(file):
     :param file: original file path
     :return: list
     """
-    from collections import Counter
-    from itertools import takewhile
 
     dict1 = create_dictionary(file)
     c = Counter()
