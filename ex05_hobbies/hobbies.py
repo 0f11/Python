@@ -1,5 +1,6 @@
 """hobbies.py."""
 import csv
+from collections import defaultdict
 
 
 def create_list_from_file(file):
@@ -47,9 +48,9 @@ def find_person_with_most_hobbies(file):
     person = ""
     most = 0
 
-    for i in dict1:
-        most = len(dict1[i])
-        person = i
+    for x in dict1:
+        most = len(dict1[x])
+        person = x
         break
 
     for x in dict1:
@@ -59,9 +60,9 @@ def find_person_with_most_hobbies(file):
 
     list1.append(person)
 
-    for y in dict1:
-        if len(dict1[y]) == most and y != person:
-            list1.append(y)
+    for x in dict1:
+        if len(dict1[x]) == most and x != person:
+            list1.append(x)
 
     return list1
 
@@ -78,9 +79,9 @@ def find_person_with_least_hobbies(file):
     person = ""
     least_hobbies = 0
 
-    for i in dict1:
-        least_hobbies = len(dict1[i])
-        person = i
+    for x in dict1:
+        least_hobbies = len(dict1[x])
+        person = x
         break
 
     for x in dict1:
@@ -90,9 +91,9 @@ def find_person_with_least_hobbies(file):
 
     list1.append(person)
 
-    for y in dict1:
-        if len(dict1[y]) == least_hobbies and y != person:
-            list1.append(y)
+    for x in dict1:
+        if len(dict1[x]) == least_hobbies and x != person:
+            list1.append(x)
 
     return list1
 
@@ -104,14 +105,36 @@ def find_most_popular_hobby(file):
     :param file: original file path
     :return: list
     """
-    from collections import Counter
-
     dict1 = create_dictionary(file)
-    c = Counter()
-    for d in dict1.values():
-        c += Counter(d)
+    new_dict = defaultdict(int)
+    hobby = ""
+    number = 0
+    list1 = []
 
-    return [c.most_common()[0][0]]
+    for x in dict1:
+        list1 += dict1[x]
+
+    for element in list1:
+        new_dict[element] += 1
+
+    for x in new_dict:
+        number = new_dict[x]
+        hobby = x
+        break
+
+    for x in new_dict:
+        if new_dict[x] > number:
+            number = new_dict[x]
+            hobby = x
+
+    popular = []
+    popular.append(hobby)
+
+    for x in new_dict:
+        if new_dict[x] == number and hobby != x:
+            popular.append(x)
+
+    return popular
 
 
 def find_least_popular_hobby(file):
@@ -121,13 +144,36 @@ def find_least_popular_hobby(file):
     :param file: original file path
     :return: list
     """
-    from collections import Counter
     dict1 = create_dictionary(file)
-    c = Counter()
-    for d in dict1.values():
-        c += Counter(d)
+    new_dict = defaultdict(int)
+    hobby = ""
+    number = 0
+    list1 = []
 
-    return [c.most_common()[-1][0]]
+    for x in dict1:
+        list1 += dict1[x]
+
+    for element in list1:
+        new_dict[element] += 1
+
+    for x in new_dict:
+        number = new_dict[x]
+        hobby = x
+        break
+
+    for x in new_dict:
+        if new_dict[x] < number:
+            number = new_dict[x]
+            hobby = x
+
+    popular = []
+    popular.append(hobby)
+
+    for x in new_dict:
+        if new_dict[x] == number and hobby != x:
+            popular.append(x)
+
+    return popular
 
 
 def write_corrected_database(file, file_to_write):
@@ -159,22 +205,22 @@ def write_corrected_database(file, file_to_write):
 
 if __name__ == '__main__':
     dic = create_dictionary("hobbies_database.txt")
-    # print(len(create_list_from_file("hobbies_database.txt")))  # -> 100
-    # print("Check presence of hobbies for chosen person:")
-    # print("shopping" in dic["Wendy"])  # -> True
-    # print("fitness" in dic["Sophie"])  # -> False
-    # print("gaming" in dic["Peter"])  # -> True
-    # print("Check if hobbies - person relation is correct:")
-    # print("Check if a person(people) with the biggest amount of hobbies is(are) correct:")
-    # print(find_person_with_most_hobbies("hobbies_database.txt"))  # -> ['Jack']
-    # print(len(dic["Jack"]))  # ->  12
-    # print(len(dic["Carmen"]))  # -> 10
-    # print("Check if a person(people) with the smallest amount of hobbies is(are) correct:")
-    # print(find_person_with_least_hobbies("hobbies_database.txt"))  # -> ['Molly']
-    # print(len(dic["Molly"]))  # -> 5
-    # print(len(dic["Sophie"]))  # -> 7
-    # print("Check if the most popular hobby(ies) is(are) correct")
+    print(len(create_list_from_file("hobbies_database.txt")))  # -> 100
+    print("Check presence of hobbies for chosen person:")
+    print("shopping" in dic["Wendy"])  # -> True
+    print("fitness" in dic["Sophie"])  # -> False
+    print("gaming" in dic["Peter"])  # -> True
+    print("Check if hobbies - person relation is correct:")
+    print("Check if a person(people) with the biggest amount of hobbies is(are) correct:")
+    print(find_person_with_most_hobbies("hobbies_database.txt"))  # -> ['Jack']
+    print(len(dic["Jack"]))  # ->  12
+    print(len(dic["Carmen"]))  # -> 10
+    print("Check if a person(people) with the smallest amount of hobbies is(are) correct:")
+    print(find_person_with_least_hobbies("hobbies_database.txt"))  # -> ['Molly']
+    print(len(dic["Molly"]))  # -> 5
+    print(len(dic["Sophie"]))  # -> 7
+    print("Check if the most popular hobby(ies) is(are) correct")
     print(find_most_popular_hobby("hobbies_database.txt"))  # -> ['gaming', 'sport', 'football']
-    # print("Check if the least popular hobby(ies) is(are) correct")
+    print("Check if the least popular hobby(ies) is(are) correct")
     print(find_least_popular_hobby("hobbies_database.txt"))  # -> ['tennis', 'dance', 'puzzles', 'flowers']
     write_corrected_database("hobbies_database.txt", 'correct_hobbies_database.csv')
