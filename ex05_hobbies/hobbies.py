@@ -1,6 +1,7 @@
 """hobbies.py."""
 import csv
 
+
 def create_list_from_file(file):
     """
     Collect lines from given file into list..
