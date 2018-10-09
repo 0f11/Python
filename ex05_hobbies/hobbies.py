@@ -106,7 +106,6 @@ def find_most_popular_hobby(file):
     :param file: original file path
     :return: list
     """
-
     dict1 = create_dictionary(file)
     c = Counter()
     for d in dict1.values():
@@ -122,12 +121,11 @@ def find_least_popular_hobby(file):
     :param file: original file path
     :return: list
     """
-
     dict1 = create_dictionary(file)
     c = Counter()
     for d in dict1.values():
         c += Counter(d)
-    popular = c.most_common(-1)[0][-1]
+    popular = c.most_common(1)[0][1]
     return list(takewhile(lambda x: x[1] == popular, c.most_common()))
 
 
