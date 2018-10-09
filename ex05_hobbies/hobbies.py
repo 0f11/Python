@@ -6,7 +6,7 @@ from itertools import takewhile
 
 def create_list_from_file(file):
     """
-    Collect lines from given file into list.
+    Collect lines from given file into list..
 
     :param file: original file path
     :return: list of lines
