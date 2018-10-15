@@ -24,17 +24,14 @@ def get_clean_text(messy_text: str) -> str:
     :return: clean string
     """
     cypher = "1234567890&@#$%^()_+|><~"
-    messy_text = messy_text.replace("*", '"')
-    messy_text = messy_text.replace("/", ',')
-    messy_text = messy_text.replace(".", '.')
-    messy_text = messy_text.replace("!", "?")
-    messy_text = messy_text.replace("?", "!")
+    messy_text = messy_text.replace("*", '"').replace("/", ',').replace(".", '.')
+    messy_text = messy_text.replace("?", "!").replace("!", "?")
     for i in messy_text:
 
         if i in cypher:
             messy_text = messy_text.replace(i, "")
 
-    return re.sub("(^|[.?!\"])\\s*([a-zA-Z])", lambda p: p.group(0).upper(), messy_text)
+    return re.sub("(^|[.?!\"])\\s*([a-zA-Z])", lambda p: p.group().upper(), messy_text)
 
 
 if __name__ == "__main__":
@@ -43,3 +40,4 @@ if __name__ == "__main__":
                          "<9Samantha t#ake6>8 9t_h#e@ )b77#5+12<us! *)ye9s|/4 80t8hey|^38 1(_##&di++18#d<)?69*/ "
                          "480sa^i1d|0 J2|9&4~oe3&>0."))  # -> Joe waited for the train. The train was late! Did Mary and
     # Samantha take the bus? "Yes, they did!",, said Joe.
+    #print(read_file("spooky_story_messy.txt"))
