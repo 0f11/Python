@@ -11,6 +11,7 @@ def read_file(file) -> str:
     """
     file = open(file)
     messy_text = file.read()
+    messy_text = get_clean_text(messy_text)
     file.close()
     return messy_text
 
@@ -23,17 +24,22 @@ def get_clean_text(messy_text: str) -> str:
     :return: clean string
     """
     cypher = "1234567890&@#$%^()_+|><~"
+    messy_text = messy_text.replace("*", '"')
+    messy_text = messy_text.replace("/", ',')
+    messy_text = messy_text.replace(".", '.')
+
     for i in messy_text:
-        messy_text = messy_text.replace("*", '"')
-        messy_text = messy_text.replace("!", '?')
-        messy_text = messy_text.replace("?", '!')
-        messy_text = messy_text.replace("/", ',')
-        messy_text = messy_text.replace(".", '.')
+
+        if i == "!":  # or i == "!":
+            messy_text = messy_text.replace("!", "?")
+        else:
+            messy_text = messy_text.replace("?", "!")
+
         if i in cypher:
             messy_text = messy_text.replace(i, "")
 
     return re.sub(r"(\A\w)|" +  # start of string
-                  "(?<!\.\w)([.?!] )\w|" +  # after a ?/!/. and a space,
+                  "(?<!\.\w)([.?!'] )\w|" +  # after a ?/!/. and a space,
                   # but not after an acronym
                   "\w(?:\.\w)|" +  # start/middle of acronym
                   "(?<=\w\.)\w",  # end of acronym
