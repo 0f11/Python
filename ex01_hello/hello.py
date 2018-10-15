@@ -1,5 +1,5 @@
 """
-Hello.py.
+Hello.py..
 
 is a script for calculating body mass index.
 """

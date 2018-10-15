@@ -5,7 +5,7 @@ from collections import defaultdict
 
 def create_list_from_file(file):
     """
-    Collect lines from given file into list.
+    Collect lines from given file into list..
 
     :param file: original file path
     :return: list of lines
@@ -48,9 +48,9 @@ def find_person_with_most_hobbies(file):
     person = ""
     most = 0
 
-    for i in dict1:
-        most = len(dict1[i])
-        person = i
+    for x in dict1:
+        most = len(dict1[x])
+        person = x
         break
 
     for x in dict1:
@@ -60,9 +60,9 @@ def find_person_with_most_hobbies(file):
 
     list1.append(person)
 
-    for y in dict1:
-        if len(dict1[y]) == most and y != person:
-            list1.append(y)
+    for x in dict1:
+        if len(dict1[x]) == most and x != person:
+            list1.append(x)
 
     return list1
 
@@ -79,9 +79,9 @@ def find_person_with_least_hobbies(file):
     person = ""
     least_hobbies = 0
 
-    for i in dict1:
-        least_hobbies = len(dict1[i])
-        person = i
+    for x in dict1:
+        least_hobbies = len(dict1[x])
+        person = x
         break
 
     for x in dict1:
@@ -91,9 +91,9 @@ def find_person_with_least_hobbies(file):
 
     list1.append(person)
 
-    for y in dict1:
-        if len(dict1[y]) == least_hobbies and y != person:
-            list1.append(y)
+    for x in dict1:
+        if len(dict1[x]) == least_hobbies and x != person:
+            list1.append(x)
 
     return list1
 
@@ -106,10 +106,10 @@ def find_most_popular_hobby(file):
     :return: list
     """
     dict1 = create_dictionary(file)
-    list1 = []
     new_dict = defaultdict(int)
     hobby = ""
-    most = 0
+    number = 0
+    list1 = []
 
     for x in dict1:
         list1 += dict1[x]
@@ -117,37 +117,38 @@ def find_most_popular_hobby(file):
     for element in list1:
         new_dict[element] += 1
 
-    for i in new_dict:
-        if new_dict[i] > most:
-            most = new_dict[i]
-            hobby = i
-
-    for y in new_dict:
-        most = new_dict[y]
-        hobby = y
+    for x in new_dict:
+        number = new_dict[x]
+        hobby = x
         break
 
-    most_popular = []
-    most_popular.append(hobby)
-    for z in new_dict:
-        if new_dict[z] == most and hobby != z:
-            most_popular.append(z)
+    for x in new_dict:
+        if new_dict[x] > number:
+            number = new_dict[x]
+            hobby = x
 
-    return most_popular
+    popular = []
+    popular.append(hobby)
+
+    for x in new_dict:
+        if new_dict[x] == number and hobby != x:
+            popular.append(x)
+
+    return popular
 
 
 def find_least_popular_hobby(file):
     """
-    Find the least popular hobby.
+    Find the least popular hobby..
 
     :param file: original file path
     :return: list
     """
     dict1 = create_dictionary(file)
-    list1 = []
     new_dict = defaultdict(int)
-    least = 0
     hobby = ""
+    number = 0
+    list1 = []
 
     for x in dict1:
         list1 += dict1[x]
@@ -155,24 +156,24 @@ def find_least_popular_hobby(file):
     for element in list1:
         new_dict[element] += 1
 
-    for z in new_dict:
-        if new_dict[z] < least:
-            least = new_dict[z]
-            hobby = z
-
-    for y in new_dict:
-        least = new_dict[y]
-        hobby = y
+    for x in new_dict:
+        number = new_dict[x]
+        hobby = x
         break
 
-    least_popular = []
-    least_popular.append(hobby)
+    for x in new_dict:
+        if new_dict[x] < number:
+            number = new_dict[x]
+            hobby = x
 
-    for i in new_dict:
-        if new_dict[i] == least and hobby != i:
-            least_popular.append(i)
+    popular = []
+    popular.append(hobby)
 
-    return least_popular
+    for x in new_dict:
+        if new_dict[x] == number and hobby != x:
+            popular.append(x)
+
+    return popular
 
 
 def write_corrected_database(file, file_to_write):
@@ -189,10 +190,14 @@ def write_corrected_database(file, file_to_write):
         writer.writerow([name, hobbies])
 
         dict1 = create_dictionary(file)
+        list1 = []
 
-        for k, v in dict1.items():
-            string_hobbies = "-".join(element for element in v)
-            writer.writerow([k, string_hobbies])
+        for key in dict1:
+            list1.append(key)
+
+        for element in sorted(list1):
+            string_hobbies = "-".join(el for el in sorted(dict1[element]))
+            writer.writerow([element, string_hobbies])
 
 
 # These examples are based on a given text file from the exercise.
