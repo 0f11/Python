@@ -23,11 +23,15 @@ def get_clean_text(messy_text: str) -> str:
     """
     cypher = "1234567890&@#$%^()_+|><~"
     for i in messy_text:
-
+        messy_text = messy_text.replace("*", '"')
+        messy_text = messy_text.replace("!", '?')
+        messy_text = messy_text.replace("?", '!')
+        messy_text = messy_text.replace("/", ',')
+        messy_text = messy_text.replace(".", '.')
         if i in cypher:
             messy_text = messy_text.replace(i, "")
 
-    return messy_text
+    return messy_text.capitalize()
 
 
 if __name__ == "__main__":
