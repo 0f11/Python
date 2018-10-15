@@ -1,4 +1,5 @@
 """Collect story parts from a messy text."""
+import re
 
 
 def read_file(file) -> str:
@@ -31,7 +32,13 @@ def get_clean_text(messy_text: str) -> str:
         if i in cypher:
             messy_text = messy_text.replace(i, "")
 
-    return messy_text.capitalize()
+    return re.sub(r"(\A\w)|" +  # start of string
+                  "(?<!\.\w)([.?!] )\w|" +  # after a ?/!/. and a space,
+                  # but not after an acronym
+                  "\w(?:\.\w)|" +  # start/middle of acronym
+                  "(?<=\w\.)\w",  # end of acronym
+                  lambda x: x.group().upper(),
+                  messy_text)
 
 
 if __name__ == "__main__":
