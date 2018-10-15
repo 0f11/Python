@@ -24,7 +24,7 @@ def get_clean_text(messy_text: str) -> str:
     :return: clean string
     """
     cypher = "1234567890&@#$%^()_+|><~"
-    messy_text = messy_text.replace("*", '"')
+    messy_text = messy_text.replace("*", "'")
     messy_text = messy_text.replace("/", ',')
     messy_text = messy_text.replace(".", '.')
 
@@ -38,8 +38,7 @@ def get_clean_text(messy_text: str) -> str:
         if i in cypher:
             messy_text = messy_text.replace(i, "")
 
-    return re.sub(r"(\A\w)|" + "(?<!\.\w)([.?!'] )\w|" + "\w(?:\.\w)|" + "(?<=\w\.)\w", lambda x: x.group().upper(),
-                  messy_text)
+    return re.sub("(^|[.?!'])\s*([a-zA-Z])", lambda p: p.group(0).upper(), messy_text)
 
 
 if __name__ == "__main__":
