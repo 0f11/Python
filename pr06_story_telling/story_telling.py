@@ -10,6 +10,7 @@ def read_file(file) -> str:
     """
     file = open(file)
     messy_text = file.read()
+    file.close()
     return messy_text
 
 
