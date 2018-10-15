@@ -38,12 +38,7 @@ def get_clean_text(messy_text: str) -> str:
         if i in cypher:
             messy_text = messy_text.replace(i, "")
 
-    return re.sub(r"(\A\w)|" +  # start of string
-                  "(?<!\.\w)([.?!'] )\w|" +  # after a ?/!/. and a space,
-                  # but not after an acronym
-                  "\w(?:\.\w)|" +  # start/middle of acronym
-                  "(?<=\w\.)\w",  # end of acronym
-                  lambda x: x.group().upper(),
+    return re.sub(r"(\A\w)|" + "(?<!\.\w)([.?!'] )\w|" + "\w(?:\.\w)|" + "(?<=\w\.)\w", lambda x: x.group().upper(),
                   messy_text)
 
 
