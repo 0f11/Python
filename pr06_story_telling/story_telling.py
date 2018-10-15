@@ -47,4 +47,4 @@ if __name__ == "__main__":
                          ">t0(+>>rai1n7^ w_a#65s l~a4t<(e><?6 d&2((|i6_9d 5Ma7r>@++y #an04(@@3d "
                          "<9Samantha t#ake6>8 9t_h#e@ )b77#5+12<us! *)ye9s|/4 80t8hey|^38 1(_##&di++18#d<)?69*/ "
                          "480sa^i1d|0 J2|9&4~oe3&>0."))  # -> Joe waited for the train. The train was late! Did Mary and
-    # Samantha take the bus? "Yes, they did!", said Joe.
+    # Samantha take the bus? "Yes, they did!",, said Joe.
