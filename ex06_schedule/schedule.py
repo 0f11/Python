@@ -9,25 +9,30 @@ def create_schedule_file(input_filename: str, output_filename: str) -> None:
     file.close()
     data = data.replace(",", ":").replace("-", ":").replace(".", ":")
     test = create_schedule_string(data)
-    return test
+    test1 = open("schedule_output.txt", "a")
+    test1.write(create_schedule_string(test))
+    test1.close()
 
 
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     schedule_dict = {}
+    for match in re.finditer(r"(\d{1,2})[:,-.](\d{1,2})+\s([a-zA-Z]+)", input_string):
+        if match[0] not in schedule_dict:
+            print(match[0])
+            schedule_dict[match[1] + match[2].zfill(2)] = match.group(3)
+        else:
+            print(schedule_dict[0])
 
-    for match in re.finditer(r"(\d{1,2}[:,-.]\d{1,2})+\s([a-zA-Z]+)", input_string):
-        schedule_dict[match.group(1)] = match.group(2)
-    print(((len(match.group(1)) + len(match.group(2)))*2+3) * "-")
-    print("|", (" " * (len(match.group(1)) + 4)), "time | items", (((len(match.group(2)))-2) * " "), "|")
-    print(((len(match.group(1)) + len(match.group(2))) * 2 + 3) * "-")
+    time_length = len(match.group(1))
+    text_length = len(match.group(3))
     for x in schedule_dict:
         if int(x.replace(":", "")) > 1200:
-            print(f"| {x:>10} PM | {schedule_dict[x]:>17} |")
+            print(f"| {x:>{time_length}}PM| {schedule_dict[x]:>{text_length}} |")
         elif int(x.replace(":", "")) < 1200:
-            print(f"| {x:>10} AM | {schedule_dict[x]:>17} |")
-    print(((len(match.group(1)) + len(match.group(2))) * 2 + 3) * "-")
+            print(f"| {x:>{time_length}}AM| {schedule_dict[x]:>{text_length}} |")
+
 
 if __name__ == '__main__':
     print(create_schedule_string("wat 11:00 teine tekst 11:0 jah ei 10:00 pikktekst "))
-    create_schedule_file("schedule_input.txt", "schedule_output.txt")
+    # create_schedule_file("schedule_input.txt", "schedule_output.txt")
