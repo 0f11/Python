@@ -56,6 +56,8 @@ def no_items():
 
 def min_max_values(sorted_items):
     """
+    Find mind and max values.
+
     :param sorted_items:
     :return:
     """
@@ -76,6 +78,8 @@ def min_max_values(sorted_items):
 
 def print_table(sorted_items):
     """
+    Print the table of results.
+
     :param sorted_items:
     :return:
     """
