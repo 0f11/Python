@@ -46,7 +46,7 @@ def shortest_way_back(path: str) -> str:
         tagasitee.append("W"*abs(long))
     elif long < 0:
         tagasitee.append("E"*abs(long))
-    print("".join(tagasitee))
+    return "".join(tagasitee)
     # while True:
     #     if lat > 0:
     #         lat = lat + d["S"][0]
