@@ -36,25 +36,36 @@ def shortest_way_back(path: str) -> str:
 
         elif direction == "W":
             long = long + d["W"][1]
-    tagasitee = []
 
+    return midaiganes(lat, long)
+
+
+def midaiganes(lat, long):
+    """
+    Liiga palju ife.
+
+    :param lat:
+    :param long:
+    :return:
+    """
+    tagasitee = []
     while True:
         if lat > 0:
-            tagasitee.append(lat * "S")
-            lat = lat + (lat * d["S"][0])
+            lat = lat - 1
+            tagasitee.append("S")
         elif lat < 0:
-            tagasitee.append(abs(lat) * "N")
-            lat = lat + (abs(lat) * d["N"][0])
+            lat = lat + 1
+            tagasitee.append("N")
         if long > 0:
-            tagasitee.append(abs(long) * "W")
-            long = long + (abs(long) * d["W"][1])
+            long = long - 1
+            tagasitee.append("W")
         elif long < 0:
-            tagasitee.append(abs(long) * "E")
-            long = long + (abs(long) * d["E"][1])
+            long = long + 1
+            tagasitee.append("E")
         if lat == 0 and long == 0:
             break
+    return "".join(tagasitee)
 
-    print("".join(tagasitee))
 
 if __name__ == '__main__':
     shortest_way_back("NNN")  # == "SSS"
@@ -62,5 +73,5 @@ if __name__ == '__main__':
     shortest_way_back("E")  # == "W"
     shortest_way_back("WWWW")  # == "EEEE"
     shortest_way_back("")  # == ""
-    shortest_way_back("NESW")  # == ""
+    shortest_way_back("NESW") == ""
     shortest_way_back("NNEESEW") in ["SWW", "WSW", "WWS"]
