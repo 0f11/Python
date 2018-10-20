@@ -6,7 +6,6 @@ def sum_odds_or_evens(a, b):
     Given two numbers, return the sum of these numbers if they both are even or odd numbers, otherwise return None.
 
     Consider that zero is also even number.
-
     sum_odds_or_evens(2, 19) → 12
     sum_odds_or_evens(17, 31) → 48
     sum_odds_or_evens(99, 100) → None
@@ -39,7 +38,8 @@ def first_and_last_item(num_list):
 
 def exchange_first_and_last(word):
     """
-    Given a word as a string, return a string where first and last character are exchanged if last character is smaller
+    Given a word as a string, return a string where first and last character are exchanged if last character is smaller.
+
     then first one, otherwise return intital word.
 
     Also, if the length of input word is smaller than one return empty string.
@@ -133,4 +133,4 @@ if __name__ == '__main__':
     print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
     print(repeated_word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
     print(repeated_word_numeration(["Tere", "tere", "tulemast", "no", "tere",
-                           "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no","tere#3", "TERE#4"]
+                                    "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no","tere#3", "TERE#4"]
