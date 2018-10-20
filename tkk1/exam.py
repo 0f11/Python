@@ -57,15 +57,18 @@ def exchange_first_and_last(word):
     for i in word:
         word1.append(i)
         word2.append(i)
+
     if word == "":
         return ""
 
-    if word1[0] > word1[-1]:
+    elif word1[0] > word1[-1]:
         del word1[0]
         del word1[-1]
         word1.append(word2[0])
         word1.insert(0, word2[-1])
         return "".join(word1)
+    else:
+        return word
 
 
 def remove_nth_symbol(s, n):
@@ -127,10 +130,10 @@ def repeated_word_numeration(words_list):
 if __name__ == '__main__':
     # print(sum_odds_or_evens(99, 100))
     # print(first_and_last_item([5, 2, 7]))
-    # print(exchange_first_and_last('kala'))
-    # print(exchange_first_and_last('kala')) #→ 'aalk'
-    # print(exchange_first_and_last('kalalaev'))# → 'kalalaev'
-    # print(exchange_first_and_last('r')) #→ 'r'
+    print(exchange_first_and_last('kala'))
+    print(exchange_first_and_last('kala')) #→ 'aalk'
+    print(exchange_first_and_last('kalalaev'))# → 'kalalaev'
+    print(exchange_first_and_last('r')) #→ 'r'
     print(exchange_first_and_last(''))# → ''
     # print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
     # print(repeated_word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
