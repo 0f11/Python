@@ -131,6 +131,6 @@ def repeated_word_numeration(words_list):
 
 if __name__ == '__main__':
     print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
-    print(word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
-    print(word_numeration(["Tere", "tere", "tulemast", "no", "tere",
+    print(repeated_word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
+    print(repeated_word_numeration(["Tere", "tere", "tulemast", "no", "tere",
                            "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no","tere#3", "TERE#4"]
