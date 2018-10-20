@@ -86,7 +86,7 @@ def remove_nth_symbol(s, n):
         output.append(i)
 
     if n <= len(s):
-        del output[n]
+        del output[n - 1]
     return "".join(output)
 
 
@@ -130,10 +130,13 @@ if __name__ == '__main__':
     # print(exchange_first_and_last('kalalaev'))# → 'kalalaev'
     # print(exchange_first_and_last('r')) #→ 'r'
     # exchange_first_and_last('')# → ''
-    print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
-    print(repeated_word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
-    print(repeated_word_numeration(
-        ["Tere", "tere", "tulemast", "no", "tere", "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no",
+    # print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
+    # print(repeated_word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
+    # print(repeated_word_numeration(
+    #     ["Tere", "tere", "tulemast", "no", "tere", "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no",
     # "tere#3", "TERE#4"]
     # print(remove_nth_symbol("sadam", 3))
     # print(repeated_word_numeration(["Uhti", "uhti", "uhkesti"]))
+    print(remove_nth_symbol("tere", 1))# = > "ere"
+    print(remove_nth_symbol("tere", 3))# = > "tee"
+    print(remove_nth_symbol("tere", 5))# = > "tere"
