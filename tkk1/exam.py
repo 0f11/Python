@@ -20,6 +20,7 @@ def sum_odds_or_evens(a, b):
     else:
         return None
 
+
 def first_and_last_item(num_list):
     """
     Given an list of number of ints, return a new list with length 2 containing the first and last elements from the initial list.
@@ -51,7 +52,7 @@ def exchange_first_and_last(word):
     :param word: input string.
     :return: a string
     """
-    word1 =[]
+    word1 = []
     word2 = []
     for i in word:
         word1.append(i)
@@ -63,7 +64,6 @@ def exchange_first_and_last(word):
         word1.append(word2[0])
         word1.insert(0, word2[-1])
     return "".join(word1)
-
 
 
 def remove_nth_symbol(s, n):
@@ -88,6 +88,8 @@ def remove_nth_symbol(s, n):
     if n <= len(s):
         del output[n]
     return "".join(output)
+
+
 def repeated_word_numeration(words_list):
     """
     For a given list of words, add numeration for every repeated word.
@@ -111,16 +113,16 @@ def repeated_word_numeration(words_list):
     vastus = []
     n = 0
     for i in words_list:
-        if i == i:
+        print(i)
+        if vastus:
             n = n + 1
             vastus.append(i + "#" + str(n))
         else:
             vastus.append(i)
-    print(vastus)
+            # print(vastus)
 
 
 if __name__ == '__main__':
-
     # print(sum_odds_or_evens(99, 100))
     # print(first_and_last_item([5, 2, 7]))
     # print(exchange_first_and_last('kala'))
@@ -128,9 +130,10 @@ if __name__ == '__main__':
     # print(exchange_first_and_last('kalalaev'))# → 'kalalaev'
     # print(exchange_first_and_last('r')) #→ 'r'
     # exchange_first_and_last('')# → ''
-    print(repeated_word_numeration(["tere", "tere", "tulemast"]))# = > ["tere#1", "tere#2", "tulemast"]
-    print(repeated_word_numeration(["Tere", "tere", "tulemast"]))# = > ["Tere#1", "tere#2", "tulemast"]
-    print(repeated_word_numeration(["Tere", "tere", "tulemast", "no", "tere", "TERE"]))# = > ["Tere#1", "tere#2", "tulemast#1", "no",
-                                                                            # "tere#3", "TERE#4"]
+    print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
+    print(repeated_word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
+    print(repeated_word_numeration(
+        ["Tere", "tere", "tulemast", "no", "tere", "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no",
+    # "tere#3", "TERE#4"]
     # print(remove_nth_symbol("sadam", 3))
     # print(repeated_word_numeration(["Uhti", "uhti", "uhkesti"]))
