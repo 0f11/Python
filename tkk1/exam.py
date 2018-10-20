@@ -1,4 +1,4 @@
-""" Esimene tunnikontroll."""
+"""Esimene tunnikontroll."""
 
 
 def sum_odds_or_evens(a, b):
