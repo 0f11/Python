@@ -23,7 +23,7 @@ def sum_odds_or_evens(a, b):
 
 def first_and_last_item(num_list):
     """
-    Given an list of number of ints, return a new list with length 2 containing the first and last elements from the initial list.
+    Given an list of number of ints, return a new list with length 2 containing the first and last.
 
     The initial list will be length 1 or more.
 
@@ -112,7 +112,7 @@ def repeated_word_numeration(words_list):
 
     word_numeration(["tere", "tere", "tulemast"]) => ["tere#1", "tere#2", "tulemast"]
     word_numeration(["Tere", "tere", "tulemast"]) => ["Tere#1", "tere#2", "tulemast"]
-    word_numeration(["Tere", "tere", "tulemast", "no", "tere", "TERE"]) => ["Tere#1", "tere#2", "tulemast#1", "no", "tere#3", "TERE#4"]
+    word_numeration(["Tere", "tere", "tulemast", "no", "tere", "TERE"]) => ["Tere#1", "tere#2", "tulemast#1"
 
     :param words: A list of strings.
     :return: List of words where repeated words have numeration.
@@ -120,18 +120,17 @@ def repeated_word_numeration(words_list):
     vastus = []
     n = 0
     for i in words_list:
-        print(i)
         if vastus:
             n = n + 1
             vastus.append(i + "#" + str(n))
         else:
             vastus.append(i)
             # print(vastus)
+    return "".join(vastus)
 
 
 if __name__ == '__main__':
-    print(sum_odds_or_evens(99, 100))
-    print(first_and_last_item([5, 2, 7]))
-    print(exchange_first_and_last('kala'))
-    print(exchange_first_and_last('kala'))  # → 'aalk'
-    print(exchange_first_and_last('kalalaev'))  # → 'kalalaev'
+    print(repeated_word_numeration(["tere", "tere", "tulemast"]))  # = > ["tere#1", "tere#2", "tulemast"]
+    print(word_numeration(["Tere", "tere", "tulemast"]))  # = > ["Tere#1", "tere#2", "tulemast"]
+    print(word_numeration(["Tere", "tere", "tulemast", "no", "tere",
+                           "TERE"]))  # = > ["Tere#1", "tere#2", "tulemast#1", "no","tere#3", "TERE#4"]
