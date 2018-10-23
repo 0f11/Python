@@ -33,11 +33,13 @@ def simulate(world_map: list, flight_plan: list) -> list:
     dmap[a, b] = "-"
 
     for d in flight_plan:
+        if dmap[(a, b)] == '#':
+            continue
         if dmap[(a, b)] != '#':
-            if dmap[(a, b)] == 'W':
-                dmap[(a, b)] = 'w'
             if dmap[(a, b)] == 'w':
                 dmap[(a, b)] = '-'
+            if dmap[(a, b)] == 'W':
+                dmap[(a, b)] = 'w'
             if d == "N":
                 a = a - 1
 
@@ -49,15 +51,7 @@ def simulate(world_map: list, flight_plan: list) -> list:
 
             elif d == "W":
                 b = b - 1
-        else:
-            if a == 0:
-                a += 1
-                b += 1
-                continue
-            else:
-                a -= 1
-                b += 1
-                continue
+
     dmap[a, b] = 'X'
 
     return dictionary_to_list_converter(dmap, a, b)
@@ -103,13 +97,14 @@ def dictionary_to_list_converter(space_map: dict, width: int, height: int) -> li
     PS: You should add Shippy back the the dictionary before you call this method.
     """
     list1 = []
-    for x, y in enumerate(space_map):
-
-        if x == 1:
-            for i in space_map.values():
-                list1.append(i)
-
-    return ["".join(list1[:len(list1)//2]), "".join(list1[len(list1)//2:])]
+    sortedlist = sorted(space_map.items())
+    string = ""
+    for key in sortedlist:
+        if key[0][1] == 0:
+            list1.append(string)
+            string = ""
+        list1[key[0][0]] += key[1]
+    return list1
 
 
 if __name__ == '__main__':
