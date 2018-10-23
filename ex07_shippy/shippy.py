@@ -30,26 +30,38 @@ def simulate(world_map: list, flight_plan: list) -> list:
         "E": (0, 1),
         "W": (0, -1)}
     dmap, a, b = list_to_dictionary_converter(world_map)
-    print(dmap)
+    dmap[a, b] = "-"
+
     for d in flight_plan:
-        if d == "N":
-            a = a + 1
+        if dmap[(a, b)] != '#':
+            if dmap[(a, b)] == 'W':
+                dmap[(a, b)] = 'w'
+            if dmap[(a, b)] == 'w':
+                dmap[(a, b)] = '-'
+            if d == "N":
+                a = a - 1
 
-        elif d == "S":
-            a = a - 1
+            elif d == "S":
+                a = a + 1
 
-        elif d == "E":
-            b = b + 1
+            elif d == "E":
+                b = b + 1
 
-        elif d == "W":
-            b = b - 1
+            elif d == "W":
+                b = b - 1
+        else:
+            if a == 0:
+                a += 1
+                b += 1
+                continue
+            else:
+                a -= 1
+                b += 1
+                continue
+    dmap[a, b] = 'X'
 
+    return dictionary_to_list_converter(dmap, a, b)
 
-        # if dmap[a][b] == '#':
-
-    print(a, b)
-    # return dictionary_to_list_converter(dmap, a, b)
-    pass
 
 
 def list_to_dictionary_converter(world_map: list) -> Tuple[dict, int, int]:
@@ -91,31 +103,31 @@ def dictionary_to_list_converter(space_map: dict, width: int, height: int) -> li
     PS: You should add Shippy back the the dictionary before you call this method.
     """
     list1 = []
-    for x, y in space_map:
-        if x < 0:
-            list1[0].append(space_map.values())
-        # else:
-        #     list1[-1].append(space_map.values())
+    for x, y in enumerate(space_map):
 
-    print(list1)
+        if x == 1:
+            for i in space_map.values():
+                list1.append(i)
+
+    return ["".join(list1[:len(list1)//2]), "".join(list1[len(list1)//2:])]
 
 
 if __name__ == '__main__':
-    space_list1 = [
-        "#www-",
-        "wXw#-",
-    ]
-
-    flight_plan1 = ["N", "E", "E", "S", "E"]
-    print("\n".join(simulate(space_list1, flight_plan1)))
-    print(list_to_dictionary_converter(flight_plan1))
-
-    # #---X
-    # w-w#-
-
-    assert simulate(space_list1, flight_plan1) == ["#---X", "w-w#-"]
-
-    print()
+    # space_list1 = [
+    #     "#www-",
+    #     "wXw#-",
+    # ]
+    #
+    # flight_plan1 = ["N", "E", "E", "S", "E"]
+    # print("\n".join(simulate(space_list1, flight_plan1)))
+    # print(list_to_dictionary_converter(flight_plan1))
+    #
+    # # #---X
+    # # w-w#-
+    #
+    # assert simulate(space_list1, flight_plan1) == ["#---X", "w-w#-"]
+    #
+    # print()
 
     space_list2 = [
         "WWWW",
@@ -132,16 +144,16 @@ if __name__ == '__main__':
 
     assert simulate(space_list2, flight_plan2) == ["wwwW", "---W", "-X#W"]
 
-    assert list_to_dictionary_converter(["-"]) == ({(0, 0): "-"}, 0, 0)
-    assert list_to_dictionary_converter(['W#', '-X']) == ({(0, 0): 'W', (0, 1): '#', (1, 0): '-', (1, 1): '-'}, 1, 1)
-
-    assert list_to_dictionary_converter(
-        world_map=space_list1
-    ) == ({(0, 0): '#', (0, 1): 'w', (0, 2): 'w', (0, 3): 'w', (0, 4): '-', (1, 0): 'w', (1, 1): '-', (1, 2): 'w',
-           (1, 3): '#', (1, 4): '-'}, 1, 1)
-
-    assert dictionary_to_list_converter(
-        {(0, 0): '#', (0, 1): 'w', (0, 2): 'w', (0, 3): 'w', (0, 4): '-', (1, 0): 'w', (1, 1): 'X', (1, 2): 'w',
-         (1, 3): '#', (1, 4): '-'}, 5, 2) == space_list1
-
-    assert dictionary_to_list_converter({(0, 0): "X"}, 1, 1) == ["X"]
+    # assert list_to_dictionary_converter(["-"]) == ({(0, 0): "-"}, 0, 0)
+    # assert list_to_dictionary_converter(['W#', '-X']) == ({(0, 0): 'W', (0, 1): '#', (1, 0): '-', (1, 1): '-'}, 1, 1)
+    #
+    # assert list_to_dictionary_converter(
+    #     world_map=space_list1
+    # ) == ({(0, 0): '#', (0, 1): 'w', (0, 2): 'w', (0, 3): 'w', (0, 4): '-', (1, 0): 'w', (1, 1): '-', (1, 2): 'w',
+    #        (1, 3): '#', (1, 4): '-'}, 1, 1)
+    #
+    # assert dictionary_to_list_converter(
+    #     {(0, 0): '#', (0, 1): 'w', (0, 2): 'w', (0, 3): 'w', (0, 4): '-', (1, 0): 'w', (1, 1): 'X', (1, 2): 'w',
+    #      (1, 3): '#', (1, 4): '-'}, 5, 2) == space_list1
+    #
+    # assert dictionary_to_list_converter({(0, 0): "X"}, 1, 1) == ["X"]
