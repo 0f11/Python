@@ -3,6 +3,31 @@
 from typing import Tuple
 
 
+def new_position(step, ship_pos):
+    """
+    Find new position.
+
+    :param step: char
+    :param ship_pos: list
+    :return: list
+    """
+    d = {
+        "N": (-1, 0),
+        "S": (1, 0),
+        "E": (0, 1),
+        "W": (0, -1)
+    }
+    position = ship_pos[:]
+
+    if step == "N" or step == "S":
+        position[0] += d[step][0]
+
+    elif step == "E" or step == "W":
+        position[1] += d[step][1]
+
+    return position
+
+
 def simulate(world_map: list, flight_plan: list) -> list:
     """
     Simulate a flying space ship fighting space pirates.
@@ -23,31 +48,41 @@ def simulate(world_map: list, flight_plan: list) -> list:
     If Shippy fights pirates in high presence area, it first turns into low presence ('w')
      and then from low presence into no presence area ('-').
     """
+    list1 = list_to_dictionary_converter(world_map)
 
-    dmap, a, b = list_to_dictionary_converter(world_map)
-    dmap[a, b] = "-"
-    for d in flight_plan:
+    world_map1 = list1[0]
+    ship_pos = [list1[1], list1[2]]
 
-        if dmap[(a, b)] == 'w':
-            dmap[(a, b)] = '-'
-        if dmap[(a, b)] == 'W':
-            dmap[(a, b)] = 'w'
-        if d == "N":
-            a = a - 1
-        elif d == "S":
-            a = a + 1
-        elif d == "E":
-            b = b + 1
-        elif d == "W":
-            b = b - 1
-        if b > ((len(dmap) // 2) - 1):
-            b = b - 1
-        if dmap[(a, b)] == '#':
-            a = a - 1
-            b = b + 1
-    dmap[a, b] = 'X'
+    width = len(world_map[0])
+    height = len(world_map)
 
-    return dictionary_to_list_converter(dmap, a, b)
+    for step in flight_plan:
+        new_position1 = new_position(step, ship_pos)
+
+        if height > new_position1[0] >= 0 and width > new_position1[1] >= 0 \
+                and world_map1[tuple(new_position1)] != "#":
+            ship_pos = new_position1
+            world_map1[tuple(ship_pos)] = change_character(world_map1[tuple(new_position1)])
+
+    world_map1[tuple(ship_pos)] = "X"
+
+    return dictionary_to_list_converter(world_map1, width, height)
+
+
+def change_character(character):
+    """
+    Change character.
+
+    :param character: character
+    :return: character
+    """
+    if character == "W":
+        character = "w"
+
+    elif character == "w":
+        character = "-"
+
+    return character
 
 
 def list_to_dictionary_converter(world_map: list) -> Tuple[dict, int, int]:
@@ -73,6 +108,7 @@ def list_to_dictionary_converter(world_map: list) -> Tuple[dict, int, int]:
             if col == 'X':
                 x = rowi
                 y = coli
+
     return d1, x, y
 
 
@@ -90,11 +126,14 @@ def dictionary_to_list_converter(space_map: dict, width: int, height: int) -> li
     list1 = []
     sortedlist = sorted(space_map.items())
     string = ""
+
     for key in sortedlist:
+
         if key[0][1] == 0:
             list1.append(string)
             string = ""
         list1[key[0][0]] += key[1]
+
     return list1
 
 
