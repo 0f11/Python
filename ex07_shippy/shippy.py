@@ -33,13 +33,16 @@ def simulate(world_map: list, flight_plan: list) -> list:
     dmap[a, b] = "-"
 
     for d in flight_plan:
-        if dmap[(a, b)] == '#':
-            continue
+
         if dmap[(a, b)] != '#':
             if dmap[(a, b)] == 'w':
                 dmap[(a, b)] = '-'
             if dmap[(a, b)] == 'W':
                 dmap[(a, b)] = 'w'
+            if a < 0:
+                continue
+            if b < 0:
+                continue
             if d == "N":
                 a = a - 1
 
