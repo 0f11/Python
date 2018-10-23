@@ -108,7 +108,7 @@ def list_to_dictionary_converter(world_map: list) -> Tuple[dict, int, int]:
             if col == 'X':
                 x = rowi
                 y = coli
-
+                d1[x, y] = '-'
     return d1, x, y
 
 
