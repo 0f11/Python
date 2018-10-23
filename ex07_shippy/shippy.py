@@ -1,6 +1,5 @@
 """Simulation."""
 
-
 from typing import Tuple
 
 
@@ -24,19 +23,32 @@ def simulate(world_map: list, flight_plan: list) -> list:
     If Shippy fights pirates in high presence area, it first turns into low presence ('w')
      and then from low presence into no presence area ('-').
     """
-    directions = {"N": (2, 3)}
+    #  flight_plan1 = ["N", "E", "E", "S", "E"]
+    d = {
+        "N": (1, 0),
+        "S": (-1, 0),
+        "E": (0, 1),
+        "W": (0, -1)}
     dmap, a, b = list_to_dictionary_converter(world_map)
-    for direction in flight_plan:
-        a += direction[direction][0]
-        b += direction[direction][1]
-        if dmap[a][b] == '#':
-            pass
-        elif outside:
-            # dont move
-        else:
-            # move
+    print(dmap)
+    for d in flight_plan:
+        if d == "N":
+            a = a + 1
 
-    return dictionary_to_list_converter(dmap, a, b)
+        elif d == "S":
+            a = a - 1
+
+        elif d == "E":
+            b = b + 1
+
+        elif d == "W":
+            b = b - 1
+
+
+        # if dmap[a][b] == '#':
+
+    print(a, b)
+    # return dictionary_to_list_converter(dmap, a, b)
     pass
 
 
@@ -53,17 +65,18 @@ def list_to_dictionary_converter(world_map: list) -> Tuple[dict, int, int]:
     coordinates are marked as 0 and 0.
     """
     d1 = {}
-    x = ""
+    x = 0
+    y = 0
     for rowi, row in enumerate(world_map):
 
         for coli, col in enumerate(row):
-            d1[coli, rowi] = col
+            d1[rowi, coli] = col
 
             if col == 'X':
-                x = coli, rowi
-            else:
-                x = 0, 0
-    return d1, x
+                x = rowi
+                y = coli
+
+    return d1, x, y
 
 
 def dictionary_to_list_converter(space_map: dict, width: int, height: int) -> list:
@@ -85,6 +98,7 @@ def dictionary_to_list_converter(space_map: dict, width: int, height: int) -> li
         #     list1[-1].append(space_map.values())
 
     print(list1)
+
 
 if __name__ == '__main__':
     space_list1 = [
