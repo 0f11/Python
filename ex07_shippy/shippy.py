@@ -23,12 +23,7 @@ def simulate(world_map: list, flight_plan: list) -> list:
     If Shippy fights pirates in high presence area, it first turns into low presence ('w')
      and then from low presence into no presence area ('-').
     """
-    #  flight_plan1 = ["N", "E", "E", "S", "E"]
-    d = {
-        "N": (1, 0),
-        "S": (-1, 0),
-        "E": (0, 1),
-        "W": (0, -1)}
+
     dmap, a, b = list_to_dictionary_converter(world_map)
     dmap[a, b] = "-"
     for d in flight_plan:
@@ -50,10 +45,6 @@ def simulate(world_map: list, flight_plan: list) -> list:
         if dmap[(a, b)] == '#':
             a = a - 1
             b = b + 1
-        if b < 0:
-            b += 1
-        if a < 0:
-            a += 1
     dmap[a, b] = 'X'
 
     return dictionary_to_list_converter(dmap, a, b)
