@@ -31,27 +31,22 @@ def simulate(world_map: list, flight_plan: list) -> list:
         "W": (0, -1)}
     dmap, a, b = list_to_dictionary_converter(world_map)
     dmap[a, b] = "-"
-
     for d in flight_plan:
-
-        if dmap[(a, b)] != '#':
+        if dmap[(a, b)] == '#':
+            a -= 1
+            b += 1
+            continue
+        else:
             if dmap[(a, b)] == 'w':
                 dmap[(a, b)] = '-'
             if dmap[(a, b)] == 'W':
                 dmap[(a, b)] = 'w'
-            if a < 0:
-                continue
-            if b < 0:
-                continue
             if d == "N":
                 a = a - 1
-
             elif d == "S":
                 a = a + 1
-
             elif d == "E":
                 b = b + 1
-
             elif d == "W":
                 b = b - 1
 
@@ -111,36 +106,36 @@ def dictionary_to_list_converter(space_map: dict, width: int, height: int) -> li
 
 
 if __name__ == '__main__':
-    # space_list1 = [
-    #     "#www-",
-    #     "wXw#-",
-    # ]
-    #
-    # flight_plan1 = ["N", "E", "E", "S", "E"]
-    # print("\n".join(simulate(space_list1, flight_plan1)))
-    # print(list_to_dictionary_converter(flight_plan1))
-    #
-    # # #---X
-    # # w-w#-
-    #
-    # assert simulate(space_list1, flight_plan1) == ["#---X", "w-w#-"]
+    space_list1 = [
+        "#www-",
+        "wXw#-",
+    ]
+
+    flight_plan1 = ["N", "E", "E", "S", "E"]
+    print("\n".join(simulate(space_list1, flight_plan1)))
+    print(list_to_dictionary_converter(flight_plan1))
+
+    # #---X
+    # w-w#-
+
+    assert simulate(space_list1, flight_plan1) == ["#---X", "w-w#-"]
     #
     # print()
 
-    space_list2 = [
-        "WWWW",
-        "-wwW",
-        "X-#W",
-    ]
-
-    flight_plan2 = ["N", "N", "E", "E", "S", "W", "W", "S", "E", "E"]
-    print("\n".join(simulate(space_list2, flight_plan2)))
-
-    # wwwW
-    # ---W
-    # -X#W
-
-    assert simulate(space_list2, flight_plan2) == ["wwwW", "---W", "-X#W"]
+    # space_list2 = [
+    #     "WWWW",
+    #     "-wwW",
+    #     "X-#W",
+    # ]
+    #
+    # flight_plan2 = ["N", "N", "E", "E", "S", "W", "W", "S", "E", "E"]
+    # print("\n".join(simulate(space_list2, flight_plan2)))
+    #
+    # # wwwW
+    # # ---W
+    # # -X#W
+    #
+    # assert simulate(space_list2, flight_plan2) == ["wwwW", "---W", "-X#W"]
 
     # assert list_to_dictionary_converter(["-"]) == ({(0, 0): "-"}, 0, 0)
     # assert list_to_dictionary_converter(['W#', '-X']) == ({(0, 0): 'W', (0, 1): '#', (1, 0): '-', (1, 1): '-'}, 1, 1)
