@@ -6,6 +6,7 @@ import shortest_way_back
 def test_shortest_way_back():
     """
     Test.
+
     :return:
     """
     assert "SSS" in shortest_way_back("NNN")
