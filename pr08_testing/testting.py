@@ -1,11 +1,13 @@
 """Testing.py."""
 
-import pytest
 import shortest_way_back
-import random
 
 
 def test_shortest_way_back():
+    """
+    Test.
+    :return:
+    """
     assert "SSS" in shortest_way_back("NNN")
     assert "NN" in shortest_way_back("SS")
     assert "W" in shortest_way_back("E")
