@@ -3,8 +3,6 @@
 from shortest_way_back import shortest_way_back
 import random
 
-"""Find the shortest way back in a taxicab geometry."""
-
 
 def shortest_way_back_correct(path: str) -> str:
     """
@@ -73,19 +71,19 @@ def midaiganes(lat, long):
 
 
 def test_north():
-    assert shortest_way_back("N") == "S"
-
-
-def test_south():
     assert shortest_way_back("S") == "N"
 
 
+def test_south():
+    assert shortest_way_back("N") == "S"
+
+
 def test_west():
-    assert shortest_way_back("W") == "E"
+    assert shortest_way_back("E") == "W"
 
 
 def test_east():
-    assert shortest_way_back("E") == "W"
+    assert shortest_way_back("W") == "E"
 
 
 def test_empty_string():
@@ -94,6 +92,7 @@ def test_empty_string():
 
 def test_finish_home():
     assert shortest_way_back("WENS") == ""
+
 
 def test_only_valid():
     for i in range(100):
