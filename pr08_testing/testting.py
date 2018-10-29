@@ -4,6 +4,54 @@ from shortest_way_back import shortest_way_back
 import random
 
 
+def test_north():
+    assert shortest_way_back("S") == "N"
+
+
+def test_north_long():
+    assert shortest_way_back("SSS") == "NNN"
+
+
+def test_south():
+    assert shortest_way_back("N") == "S"
+
+
+def test_south_long():
+    assert shortest_way_back("NNN") == "SSS"
+
+
+def test_west():
+    assert shortest_way_back("E") == "W"
+
+
+def test_west_long():
+    assert shortest_way_back("EEE") == "WWW"
+
+
+def test_east():
+    assert shortest_way_back("W") == "E"
+
+
+def test_east_long():
+    assert shortest_way_back("WWW") == "EEE"
+
+
+def test_empty_string():
+    assert shortest_way_back("") == ""
+
+
+def test_finish_home():
+    assert shortest_way_back("WENS") == ""
+
+
+def test_only_valid():
+    for i in range(100):
+        path = random.choices("NSWE", k=50)
+        result = sorted(shortest_way_back(path))
+        answer = sorted(shortest_way_back_correct(path))
+        assert result == answer
+
+
 def shortest_way_back_correct(path: str) -> str:
     """
     Find the shortest way back in a taxicab geometry.
@@ -68,51 +116,3 @@ def midaiganes(lat, long):
         if lat == 0 and long == 0:
             break
     return "".join(tagasitee)
-
-
-def test_north():
-    assert shortest_way_back("S") == "N"
-
-
-def test_north_long():
-    assert shortest_way_back("SSS") == "NNN"
-
-
-def test_south():
-    assert shortest_way_back("N") == "S"
-
-
-def test_south_long():
-    assert shortest_way_back("NNN") == "SSS"
-
-
-def test_west():
-    assert shortest_way_back("E") == "W"
-
-
-def test_west_long():
-    assert shortest_way_back("EEE") == "WWW"
-
-
-def test_east():
-    assert shortest_way_back("W") == "E"
-
-
-def test_east():
-    assert shortest_way_back("WWW") == "EEE"
-
-
-def test_empty_string():
-    assert shortest_way_back("") == ""
-
-
-def test_finish_home():
-    assert shortest_way_back("WENS") == ""
-
-
-def test_only_valid():
-    for i in range(100):
-        path = random.choices("NSWE", k=50)
-        result = sorted(shortest_way_back(path))
-        answer = sorted(shortest_way_back_correct(path))
-        assert result == answer
