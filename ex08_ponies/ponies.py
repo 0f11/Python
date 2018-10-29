@@ -3,11 +3,23 @@ import base64
 
 
 def decode(line: str) -> str:
+    """
+    Decode.
+
+    :param line:
+    :return:
+    """
     decoded = base64.b64decode(line).decode('UTF-8')
     return str(decoded)
 
 
 def extract_information(line: str) -> dict:
+    """
+    Extract.
+
+    :param line:
+    :return:
+    """
     d1 = {}
     new_list = line.split(" ")
     for i in new_list:
@@ -21,6 +33,11 @@ def extract_information(line: str) -> dict:
 
 
 def header():
+    """
+    Header.
+
+    :return:
+    """
     line = f"{'PLACE':<{10}}" \
            f"{'POINTS':<{10}}" \
            f"{'NAME':<{20}}" \
@@ -34,6 +51,12 @@ def header():
 
 
 def read(read_file: str) -> list:
+    """
+    Read.
+
+    :param read_file:
+    :return:
+    """
     try:
         list1 = []
         with open(read_file, encoding="UTF-8") as f:
@@ -50,6 +73,12 @@ def read(read_file: str) -> list:
 
 
 def filtered_by_location(ponies: list):
+    """
+    Filtered by loc.
+
+    :param ponies:
+    :return:
+    """
     list1 = []
     for x in ponies:
         if x['location'] != "None":
@@ -58,6 +87,13 @@ def filtered_by_location(ponies: list):
 
 
 def filtered_by_kind(ponies, kind):
+    """
+    Filtered by kind.
+
+    :param ponies:
+    :param kind:
+    :return:
+    """
     list1 = []
     for z in ponies:
         if ponies['kind'] == kind:
@@ -66,6 +102,12 @@ def filtered_by_kind(ponies, kind):
 
 
 def get_points_for_color(color):
+    """
+    Get points for color.
+
+    :param color:
+    :return:
+    """
     list1 = ['magenta', 'pink', 'purple', 'orange', 'red', 'yellow', 'cyan', 'blue', 'brown', 'green']
     if color in list1:
         pos = list1.index(color)
@@ -76,6 +118,12 @@ def get_points_for_color(color):
 
 
 def add_points(pony):
+    """
+    Add points.
+
+    :param pony:
+    :return:
+    """
     d1 = {
         'coat_color': ['Town Hall', 'Theater', 'School of Friendship'],
         'mane_color': ['Schoolhouse', 'Crusaders Clubhouse', 'Golden Oak Library'],
@@ -92,6 +140,12 @@ def add_points(pony):
 
 
 def evaluate_points(ponies):
+    """
+    Evaluate.
+
+    :param ponies:
+    :return:
+    """
     list1 = []
     for x in ponies:
         list1.append(add_points(x))
@@ -99,10 +153,22 @@ def evaluate_points(ponies):
 
 
 def sort_by_name(ponies):
+    """
+    Sort by name.
+
+    :param ponies:
+    :return:
+    """
     return sorted(ponies, key=lambda x: x['name'])
 
 
 def sort_by_points(ponies):
+    """
+    Sort by points.
+
+    :param ponies:
+    :return:
+    """
     list1 = []
     for x in ponies is not None:
         if x['points']:
@@ -111,6 +177,13 @@ def sort_by_points(ponies):
 
 
 def format_line(pony, place):
+    """
+    Format line.
+
+    :param pony:
+    :param place:
+    :return:
+    """
     return f'{place:<{10}}' \
            f"{pony['points']:<{10}}" \
            f"{pony['name']:<{20}}" \
@@ -122,6 +195,13 @@ def format_line(pony, place):
 
 
 def write(input_file, kind):
+    """
+    write.
+
+    :param input_file:
+    :param kind:
+    :return:
+    """
     ponies = read(input_file)
     ponies = filtered_by_location(ponies)
     ponies = filtered_by_kind(ponies, kind)
