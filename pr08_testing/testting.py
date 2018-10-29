@@ -101,6 +101,7 @@ def test_east():
 def test_east():
     assert shortest_way_back("WWW") == "EEE"
 
+
 def test_empty_string():
     assert shortest_way_back("") == ""
 
@@ -111,7 +112,7 @@ def test_finish_home():
 
 def test_only_valid():
     for i in range(100):
-        path = random.choice("NSWE", k=50)
+        path = random.choices("NSWE", k=50)
         result = sorted(shortest_way_back(path))
         answer = sorted(shortest_way_back_correct(path))
         assert result == answer
