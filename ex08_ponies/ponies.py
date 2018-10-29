@@ -140,7 +140,7 @@ def add_points(pony):
     return pony
 
 
-def evaluate_points(ponies):
+def evaluate_ponies(ponies):
     """
     Evaluate.
 
@@ -206,7 +206,7 @@ def write(input_file, kind):
     ponies = read(input_file)
     ponies = filtered_by_location(ponies)
     ponies = filtered_by_kind(ponies, kind)
-    ponies = evaluate_points(ponies)
+    ponies = evaluate_ponies(ponies)
     ponies = sort_by_name(ponies)
     ponies = sort_by_points(ponies)
     file_name = "results_for_" + kind + ".txt"
