@@ -1,6 +1,6 @@
 """Ponies.py."""
 import base64
-
+import re
 
 def decode(line: str) -> str:
     """
@@ -21,14 +21,15 @@ def extract_information(line: str) -> dict:
     :return:
     """
     d1 = {}
-    new_list = line.split(" ")
-    for i in new_list:
-        d1["name"] = str(new_list[0:2]).replace("[", '').replace("]", '').replace(",", "").replace("'", "")
-        d1["kind"] = new_list[2]
-        d1["coat_color"] = new_list[3]
-        d1["mane_color"] = new_list[4]
-        d1["eye_color"] = new_list[5]
-        d1["location"] = str(new_list[6:9]).replace("[", '').replace("]", '').replace(",", "").replace("'", "")
+    x = line
+    x = re.split(r'\s{2,}', x)
+    d1['name'] = x[0].strip()
+    d1['kind'] = x[1].strip()
+    d1['coat_color'] = x[2].strip()
+    d1['mane_color'] = x[3].strip()
+    d1['eye_color'] = x[4].strip()
+    d1['location'] = x[5].strip()
+
     return d1
 
 
