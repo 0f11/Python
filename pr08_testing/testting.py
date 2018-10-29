@@ -98,5 +98,5 @@ def test_only_valid():
     for i in range(100):
         path = random.choice("NSWE", k=50)
         result = sorted(shortest_way_back(path))
-        answer = shortest_way_back_correct(path)
-    assert result == answer
+        answer = sorted(shortest_way_back_correct(path))
+        assert result == answer
