@@ -1,6 +1,8 @@
 """Testing.py."""
 
+import pytest
 import shortest_way_back
+import random
 
 
 def test_shortest_way_back():
@@ -16,3 +18,6 @@ def test_shortest_way_back():
     assert "" in shortest_way_back("")
     assert "" in shortest_way_back("NESW")
     assert shortest_way_back("NNEESEW") in ["SWW", "WSW", "WWS"]
+
+def test_random():
+    assert random in shortest_way_back(random)
