@@ -20,6 +20,19 @@ def extract_information(line: str) -> dict:
     return d1
 
 
+def header():
+    line = f"{'PLACE':<{10}}" \
+           f"{'POINTS':<{10}}" \
+           f"{'NAME':<{20}}" \
+           f"{'KIND':<{20}}" \
+           f"{'COAT COLOR':<{20}}" \
+           f"{'MANE COLOR':<{20}}" \
+           f"{'EYE COLOR':<{20}}" \
+           f"{'LOCATION':<{20}}"
+    line2 = "-" * 128
+    return line + "\n" + line2
+
+
 def read(read_file: str) -> list:
     try:
         list1 = []
@@ -101,8 +114,7 @@ def format_line(pony, place):
            f"{pony['coat_color']:<{20}}" \
            f"{pony['mane_color']:<{20}}" \
            f"{pony['eye_color']:<{20}}" \
-           f"{pony['location']:<{20}}" \
-
+           f"{pony['location']:<{20}}"
 
 
 def write(input_file, kind):
