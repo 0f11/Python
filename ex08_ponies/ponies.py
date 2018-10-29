@@ -76,7 +76,11 @@ def get_points_for_color(color):
 
 
 def add_points(pony):
-    d1 = {}
+    d1 = {
+        'coat_color': ['Town Hall', 'Theater', 'School of Friendship'],
+        'mane_color': ['Schoolhouse', 'Crusaders Clubhouse', 'Golden Oak Library'],
+        'eye_color': ['Train station', 'Castle of Friendship', 'Retirement Village']
+    }
     if pony['location'] in d1['coat_color']:
         pony['points'] = get_points_for_color(pony['coat_color'])
     elif pony['location'] in d1['mane_color']:
@@ -84,7 +88,7 @@ def add_points(pony):
     elif pony['location'] in d1['eye_color']:
         pony['points'] = get_points_for_color(pony['eye_color'])
 
-    return d1
+    return pony
 
 
 def evaluate_points(ponies):
@@ -100,7 +104,7 @@ def sort_by_name(ponies):
 
 def sort_by_points(ponies):
     list1 = []
-    for x in ponies:
+    for x in ponies is not None:
         if x['points']:
             list1.append(x)
     return sorted(list1, key=lambda x: x['points'], reverse=True)
