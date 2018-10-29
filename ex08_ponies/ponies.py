@@ -171,7 +171,7 @@ def sort_by_points(ponies):
     :return:
     """
     list1 = []
-    for x in ponies
+    for x in ponies:
         if x['points'] is not None:
             list1.append(x)
     return sorted(list1, key=lambda x: x['points'], reverse=True)
