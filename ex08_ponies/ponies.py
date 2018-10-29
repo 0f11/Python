@@ -73,7 +73,7 @@ def read(read_file: str) -> list:
         raise Exception("File not found!")
 
 
-def filtered_by_location(ponies: list):
+def filter_by_location(ponies: list):
     """
     Filtered by loc.
 
@@ -204,7 +204,7 @@ def write(input_file, kind):
     :return:
     """
     ponies = read(input_file)
-    ponies = filtered_by_location(ponies)
+    ponies = filter_by_location(ponies)
     ponies = filter_by_kind(ponies, kind)
     ponies = evaluate_ponies(ponies)
     ponies = sort_by_name(ponies)
