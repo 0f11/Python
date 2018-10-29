@@ -87,7 +87,7 @@ def filtered_by_location(ponies: list):
     return list1
 
 
-def filtered_by_kind(ponies, kind):
+def filter_by_kind(ponies, kind):
     """
     Filtered by kind.
 
@@ -205,7 +205,7 @@ def write(input_file, kind):
     """
     ponies = read(input_file)
     ponies = filtered_by_location(ponies)
-    ponies = filtered_by_kind(ponies, kind)
+    ponies = filter_by_kind(ponies, kind)
     ponies = evaluate_ponies(ponies)
     ponies = sort_by_name(ponies)
     ponies = sort_by_points(ponies)
