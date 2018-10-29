@@ -85,7 +85,7 @@ def test_west():
 
 
 def test_east():
-    assert shortest_way_back("EE") == "WW"
+    assert shortest_way_back("E") == "W"
 
 
 def test_empty_string():
