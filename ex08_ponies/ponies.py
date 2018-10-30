@@ -236,12 +236,8 @@ def write(input_file, kind):
     file_name = "results_for_" + kind + ".txt"
     with open(file_name, "w", encoding="utf-8", newline="\n") as f:
         f.write(header())
-
-        if ponies == []:
-            f.write("\n")
-
-        for place, poni in enumerate(ponies):
-            f.write("\n" + format_line(poni, place + 1))
+        for z, y in enumerate(ponies):
+            f.write("\n" + format_line(y, z + 1))
 
 
 if __name__ == '__main__':
