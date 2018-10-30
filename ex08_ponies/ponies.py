@@ -2,6 +2,7 @@
 import base64
 import re
 
+
 def decode(line: str) -> str:
     """
     Decode.
@@ -23,6 +24,7 @@ def extract_information(line: str) -> dict:
     d1 = {}
     x = line
     x = re.split(r'\s{2,}', x)
+
     d1['name'] = x[0].strip()
     d1['kind'] = x[1].strip()
     d1['coat_color'] = x[2].strip()
@@ -60,16 +62,22 @@ def read(read_file: str) -> list:
     """
     try:
         list1 = []
+
         with open(read_file, encoding="UTF-8") as f:
             lines = f.readlines()[2:]
+
             for line in lines:
                 x = decode(line)
                 x = x.strip("b'").strip("-").strip("\n")
+
                 if len(x) > 0:
                     x = extract_information(x)
                     list1.append(x)
+
         return list1
+
     except FileNotFoundError:
+
         raise Exception("File not found!")
 
 
@@ -82,8 +90,10 @@ def filter_by_location(ponies: list):
     """
     list1 = []
     for x in ponies:
+
         if x['location'] != "None":
             list1.append(x)
+
     return list1
 
 
@@ -97,8 +107,10 @@ def filter_by_kind(ponies, kind):
     """
     list1 = []
     for z in ponies:
-        if ponies['kind'] == kind:
+
+        if z['kind'] == kind:
             list1.append(z)
+
     return list1
 
 
@@ -110,11 +122,16 @@ def get_points_for_color(color):
     :return:
     """
     list1 = ['magenta', 'pink', 'purple', 'orange', 'red', 'yellow', 'cyan', 'blue', 'brown', 'green']
+
     if color in list1:
         pos = list1.index(color)
         points = 10 - pos
+
+        if points < 5:
+            return None
     else:
         return None
+
     return points
 
 
@@ -132,8 +149,10 @@ def add_points(pony):
     }
     if pony['location'] in d1['coat_color']:
         pony['points'] = get_points_for_color(pony['coat_color'])
+
     elif pony['location'] in d1['mane_color']:
         pony['points'] = get_points_for_color(pony['mane_color'])
+
     elif pony['location'] in d1['eye_color']:
         pony['points'] = get_points_for_color(pony['eye_color'])
 
@@ -148,8 +167,10 @@ def evaluate_ponies(ponies):
     :return:
     """
     list1 = []
+
     for x in ponies:
         list1.append(add_points(x))
+
     return list1
 
 
@@ -171,9 +192,12 @@ def sort_by_points(ponies):
     :return:
     """
     list1 = []
+
     for x in ponies:
+
         if x['points'] is not None:
             list1.append(x)
+
     return sorted(list1, key=lambda x: x['points'], reverse=True)
 
 
@@ -212,7 +236,13 @@ def write(input_file, kind):
     file_name = "results_for_" + kind + ".txt"
     with open(file_name, "w", encoding="utf-8", newline="\n") as f:
         f.write(header())
+
         if ponies == []:
             f.write("\n")
+
         for place, poni in enumerate(ponies):
             f.write("\n" + format_line(poni, place + 1))
+
+
+if __name__ == '__main__':
+    write("input.txt", "Earth")
