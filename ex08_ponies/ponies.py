@@ -47,8 +47,7 @@ def header():
            f"{'KIND':<{20}}" \
            f"{'COAT COLOR':<{20}}" \
            f"{'MANE COLOR':<{20}}" \
-           f"{'EYE COLOR':<{20}}" \
-           f"{'LOCATION':<{20}}"
+           f"{'EYE COLOR':<{20}}"'LOCATION'
     line2 = "-" * 128
     return line + "\n" + line2
 
