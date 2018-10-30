@@ -47,7 +47,8 @@ def header():
            f"{'KIND':<{20}}" \
            f"{'COAT COLOR':<{20}}" \
            f"{'MANE COLOR':<{20}}" \
-           f"{'EYE COLOR':<{20}}"'LOCATION'
+           f"{'EYE COLOR':<{20}}"\
+           'LOCATION'
     line2 = "-" * 128
     return line + "\n" + line2
 
@@ -220,7 +221,7 @@ def format_line(pony, place):
 
 def write(input_file, kind):
     """
-    write.
+    Write.
 
     :param input_file:
     :param kind:
@@ -240,4 +241,4 @@ def write(input_file, kind):
 
 
 if __name__ == '__main__':
-    write("input.txt", "Earth")
+    write("input.txt", "Unicorn")
