@@ -216,7 +216,7 @@ def format_line(pony, place):
            f"{pony['coat_color']:<{20}}" \
            f"{pony['mane_color']:<{20}}" \
            f"{pony['eye_color']:<{20}}" \
-           f"{pony['location']:<{20}}"
+           f"{pony['location']}"
 
 
 def write(input_file, kind):
