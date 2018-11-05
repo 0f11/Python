@@ -24,7 +24,7 @@ def loop_sum(numbers: list) -> int:
     answer = 0
     for x in numbers:
         if x % 2 == 0:
-            answer = + x
+            answer = answer + x
 
     return answer
     pass
