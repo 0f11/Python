@@ -57,7 +57,8 @@ def names_to_be_eliminated(points_dict: dict, names: set = None, lowest_score: i
     :return: set of names of lowest scoring people.
     """
 
-    return min(points_dict, key=lambda x: points_dict[x])
+    answer = min(points_dict, key=lambda x: points_dict[x])
+    return {f"{answer}"}
 
 
 def people_in_the_know(hours_passed, cache: dict = None) -> int:
