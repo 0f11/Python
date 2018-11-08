@@ -169,13 +169,21 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
         :return: set of traversable and traversable-adjacent cell
                 coordinate tuples with respect to starting coord
         """
-        if coord[1] > len(world_map[0]) or coord[1] < 0 or coord[0] > len(world_map) or coord[0] < 0:
-            return traversable_coords
         if traversable_coords is None:
             traversable_coords = set()
 
+        if len(world_map) <= 1:
+            return set()
+
+        if len(coord) == 0:
+            return set()
+
+        if coord[1] > len(world_map[0]) or coord[1] < 0 or coord[0] > len(world_map) or coord[0] < 0:
+            return traversable_coords
+
         if coord in traversable_coords:
             return traversable_coords
+
         else:
             traversable_coords.add(coord)
         if world_map[coord[0]][coord[1]] == "":
