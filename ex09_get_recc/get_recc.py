@@ -1,4 +1,4 @@
-"""Make life easier whilst volunteering in a French language camp."""
+"""Make life easier whilst volunteering in a, French language camp."""
 
 
 def count_portions(number_of_participants: int, day: int) -> int:
