@@ -126,24 +126,60 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
     :return: set of traversable and traversable-adjacent cell
             coordinate tuples with respect to starting coord
     """
-    traversable_coords = set()
-    if coord not in traversable_coords:
-        traversable_coords.add(coord)
-        print(traversable_coords)
 
-    for x in enumerate(world_map):
+    def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_coords: set = None) -> set:
+        """
+        Return the coordinates that are traversable by humans or adjacent to traversable coordinates.
 
-        if x[0] == coord[0] and x[1][coord[1]] == "" and x[0] >= 0 and coord[1] <= len(x[1]):
-            traversable_coordinates(world_map, (coord[0] + 1, coord[1] + 1))
+        Given a two-dimensional list as a map, give the coordinates of traversable cells with the
+        coordinates of cells which are adjacent to traversable cells with respect to the
+        beginning coordinate.
 
-        if x[0] == coord[0] and x[1][coord[1]] == "1" and x[0] >= 0 and coord[1] <= len(x[1]):
-            traversable_coordinates(world_map, (coord[0] - 1, coord[1] - 1))
+        If there is not a traversable path from the beginning coordinate
+        to the traversable cell, the traversable cell coordinate is not returned. Traversable
+        cells are represented by empty strings. If the beginning coordinate cell is not traversable,
+        return empty set.
 
-        # if x[0] == coord[0] and x[1][coord[1]] == "1" and x[0] == 0:
-        #     traversable_coordinates(world_map, (coord[0] + 1, coord[1]))
-        #
-        # if x[0] == coord[0] and x[1][coord[1]] == "1" and coord[1] == len(x[1]):
-        #     traversable_coordinates(world_map, (coord[0], coord[1] - 1))
+        Coordinates are in the format (row, column). Negative coordinate values are considered invalid.
+        world_map is not necessarily rectangular. Paths can be made through a diagonal.
 
-        # if x[0] == coord[0] - 1 and x[1][coord[1]] - 1 == "":
-        #     if x[0] == coord[0] - 1 and x[1][coord[1]] - 1 == "":
+        traversable_coordinates([]) == set()
+        traversable_coordinates([[]]) == set()
+        traversable_coordinates([["", "", ""]], (5, 2)) == set()
+        traversable_coordinates([["1", "1", ""]], (-4, -9)) == set()
+        traversable_coordinates([["1", [], "1"]], (0, 1)) == set()
+
+        world = [["1", "1", "1", "1", "1"],
+                 ["1", "1", "1",  "", "1"],
+                 ["1", "1",  "", "1", "1"],
+                 ["1", "1",  "", "1", "1"],
+                 ["1", "1", "1", "1", "1"]]
+
+        traversable = {(0, 2), (0, 3), (0, 4),
+                       (1, 1), (1, 2), (1, 3), (1, 4),
+                       (2, 1), (2, 2), (2, 3), (2, 4),
+                       (3, 1), (3, 2), (3, 3),
+                       (4, 1), (4, 2), (4, 3)}
+
+        traversable_coordinates(world, (2, 2)) == traversable
+
+        :param world_map: two-dimensional list of strings.
+        :param coord: the (beginning) coordinate.
+        :param traversable_coords: helper to store traversable coordinates.
+        :return: set of traversable and traversable-adjacent cell
+                coordinate tuples with respect to starting coord
+        """
+
+        if traversable_coords is None:
+            traversable_coords = set()
+
+        if coord in traversable_coords:
+            return traversable_coords
+
+        for x in enumerate(world_map):
+            for y in enumerate(x[1]):
+
+                if y[1] == "":
+                    # print(y[0], x[0])
+                    traversable_coords.add((y[0], x[0]))
+                    traversable_coordinates(world_map, (y[0], x[0]), traversable_coords)
