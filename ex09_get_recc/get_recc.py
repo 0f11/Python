@@ -77,7 +77,7 @@ def people_in_the_know(hours_passed, cache: dict = None) -> int:
     people_in_the_know(7) == 13
 
     :param hours_passed: the hours passed from the initial release.
-    :param cache: helper to store already calculated results.
+    :param cache: helper to store already calculated results..
     :return: the number of people that have heard the rumor.
     """
     if hours_passed < 2:
