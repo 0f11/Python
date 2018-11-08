@@ -56,7 +56,6 @@ def names_to_be_eliminated(points_dict: dict, names: set = None, lowest_score: i
     :param lowest_score: helper to store current lowest score
     :return: set of names of lowest scoring people.
     """
-
     answer = min(points_dict, key=lambda x: points_dict[x])
     return {f"{answer}"}
 
@@ -82,7 +81,7 @@ def people_in_the_know(hours_passed, cache: dict = None) -> int:
     """
     if hours_passed < 2:
         return hours_passed
-    return people_in_the_know(hours_passed-2) + people_in_the_know(hours_passed-1)
+    return people_in_the_know(hours_passed - 2) + people_in_the_know(hours_passed - 1)
 
 
 def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_coords: set = None) -> set:
@@ -148,4 +147,3 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
 
         # if x[0] == coord[0] - 1 and x[1][coord[1]] - 1 == "":
         #     if x[0] == coord[0] - 1 and x[1][coord[1]] - 1 == "":
-
