@@ -56,6 +56,8 @@ def names_to_be_eliminated(points_dict: dict, names: set = None, lowest_score: i
     :param lowest_score: helper to store current lowest score
     :return: set of names of lowest scoring people.
     """
+    if len(points_dict) == 0:
+        return set()
     answer = min(points_dict, key=lambda x: points_dict[x])
     return {f"{answer}"}
 
