@@ -172,11 +172,8 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
         if traversable_coords is None:
             traversable_coords = set()
 
-        if len(world_map) <= 1:
-            return set()
-
-        if len(coord) == 0:
-            return set()
+        if len(world_map) == 0 or len(world_map[0]) == 0 or len(coord) == 0:
+            return traversable_coords
 
         if coord[1] > len(world_map[0]) or coord[1] < 0 or coord[0] > len(world_map) or coord[0] < 0:
             return traversable_coords
@@ -186,6 +183,7 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
 
         else:
             traversable_coords.add(coord)
+
         if world_map[coord[0]][coord[1]] == "":
             for y in range(coord[0] - 1, coord[0] + 2):
                 for x in range(coord[1] - 1, coord[1] + 2):
