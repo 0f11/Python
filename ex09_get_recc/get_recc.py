@@ -175,6 +175,9 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
         if len(world_map) == 0 or len(world_map[0]) == 0 or len(coord) == 0:
             return traversable_coords
 
+        if world_map[coord[0]][coord[1]] != str:
+            return set()
+
         if coord[1] > len(world_map[0]) or coord[1] < 0 or coord[0] > len(world_map) or coord[0] < 0:
             return traversable_coords
 
