@@ -124,7 +124,7 @@ def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_
 
     :param world_map: two-dimensional list of strings.
     :param coord: the (beginning) coordinate.
-    :param traversable_coords: helper to store traversable coordinates.
+    :param traversable_coords:: helper to store traversable coordinates.
     :return: set of traversable and traversable-adjacent cell
             coordinate tuples with respect to starting coord
     """
