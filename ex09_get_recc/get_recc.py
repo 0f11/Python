@@ -88,7 +88,7 @@ def people_in_the_know(hours_passed, cache: dict = None) -> int:
 
 def traversable_coordinates(world_map: list, coord: tuple = (0, 0), traversable_coords: set = None) -> set:
     """
-    Return the coordinates that are traversable by humans or adjacent to traversable coordinates.
+    Return the coordinates that are traversable by humans or adjacent to, traversable coordinates.
 
     Given a two-dimensional list as a map, give the coordinates of traversable cells with the
     coordinates of cells which are adjacent to traversable cells with respect to the
