@@ -1,0 +1,5 @@
+"""Wat."""
+
+
+def wat():
+    pass
