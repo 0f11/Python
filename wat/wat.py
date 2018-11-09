@@ -1,5 +1,12 @@
 """Wat."""
 
 
-def wat():
-    pass
+def first(n: int):
+    """
+    First.
+
+    :param n:
+    :return:
+    """
+    return n
+
