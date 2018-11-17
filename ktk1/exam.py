@@ -16,9 +16,13 @@ def remove_middle_character(string: str):
     answer = []
     if string == "":
         return ""
+
     if len(string) % 2 != 0:
         for element in string:
             answer.append(element)
+    else:
+        return string
+
     for element in range((len(string)//2) + 1):
         if element == (len(string)//2):
             answer.pop(element)
