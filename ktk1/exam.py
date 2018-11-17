@@ -1,6 +1,5 @@
-import re
-
 """KTK1."""
+import re
 
 
 def remove_middle_character(string: str):
@@ -23,8 +22,8 @@ def remove_middle_character(string: str):
     else:
         return string
 
-    for element in range((len(string)//2) + 1):
-        if element == (len(string)//2):
+    for element in range((len(string) // 2) + 1):
+        if element == (len(string) // 2):
             answer.pop(element)
     return "".join(answer)
 
@@ -57,7 +56,7 @@ def chars_combinations(string: str) -> list:
     chars_combinations("s") => []
     chars_combinations("") => []
     """
-    answer =[]
+    answer = []
     answer = re.findall(r'\w{2}', string)
     print(answer)
 
@@ -66,7 +65,7 @@ def chars_combinations(string: str) -> list:
 # print(chars_combinations("az"))  # => ["az"]
 # print(chars_combinations("s"))  # => []
 # print(chars_combinations(""))  # => []
-print(remove_middle_character("kalev")) # => "kaev"
+print(remove_middle_character("kalev"))  # => "kaev"
 print(remove_middle_character("linda"))  # => "linda"
 print(remove_middle_character("olevipoeg"))  # => "olevpoeg"
 print(remove_middle_character(""))  # => ""
