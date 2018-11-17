@@ -56,9 +56,7 @@ def chars_combinations(string: str) -> list:
     chars_combinations("s") => []
     chars_combinations("") => []
     """
-    answer = []
-    answer = re.findall(r'\w{2}', string)
-    print(answer)
+    return re.findall(r'\w{2}', string)
 
 
 # print(chars_combinations("habe"))  # => ["ha", "hb", "he", "ab", "ae", "be"]
