@@ -5,7 +5,7 @@ import re
 
 def remove_middle_character(string: str):
     """
-    Return a string where middle character is removed if the string length is equal to odd number.
+    Return a string where middle character, is removed if the string length is equal to odd number.
 
     If the input string length is equal to even number return input string. In the case of empty string, return empty string.
     remove_middle_character("kalev") => "kaev"
