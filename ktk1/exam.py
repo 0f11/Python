@@ -15,8 +15,9 @@ def remove_middle_character(string: str):
     """
     answer = []
     if len(string) % 2 != 0:
-        answer = string.split()
-    print(answer)
+        for element in string:
+            answer.append(element)
+    return answer
 
 
 def multiplication(number: int) -> list:
@@ -47,14 +48,16 @@ def chars_combinations(string: str) -> list:
     chars_combinations("s") => []
     chars_combinations("") => []
     """
-    return re.findall(r'\w{2}', string)
+    answer =[]
+    answer = re.findall(r'\w{2}', string)
+    print(answer)
 
 
-print(chars_combinations("habe"))  # => ["ha", "hb", "he", "ab", "ae", "be"]
-print(chars_combinations("az"))  # => ["az"]
-print(chars_combinations("s"))  # => []
-print(chars_combinations(""))  # => []
-# print(remove_middle_character("kalev")) # => "kaev"
-# print(remove_middle_character("linda"))  # => "linda"
-# print(remove_middle_character("olevipoeg"))  # => "olevpoeg"
-# print(remove_middle_character(""))  # => ""
+# print(chars_combinations("habe"))  # => ["ha", "hb", "he", "ab", "ae", "be"]
+# print(chars_combinations("az"))  # => ["az"]
+# print(chars_combinations("s"))  # => []
+# print(chars_combinations(""))  # => []
+print(remove_middle_character("kalev")) # => "kaev"
+print(remove_middle_character("linda"))  # => "linda"
+print(remove_middle_character("olevipoeg"))  # => "olevpoeg"
+print(remove_middle_character(""))  # => ""
