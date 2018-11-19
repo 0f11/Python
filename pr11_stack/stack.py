@@ -1,12 +1,22 @@
+"""Stack.py."""
+
 from typing import Any
+
+"""First exception for stack overflow."""
 
 
 class StackOverflowException(Exception):
     pass
 
 
+"""First exception for stack underflow."""
+
+
 class StackUnderflowException(Exception):
     pass
+
+
+"""Stack."""
 
 
 class Stack:
