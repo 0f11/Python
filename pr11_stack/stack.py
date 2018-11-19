@@ -68,9 +68,17 @@ class Stack:
             print(self.elements[0])
 
     def is_empty(self) -> bool:
+        """
+        Is empty?.
+        :return:
+        """
         pass
 
     def is_full(self) -> bool:
+        """
+        Is full?.
+        :return:
+        """
         pass
 
     def __str__(self) -> str:
