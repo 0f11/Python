@@ -7,6 +7,7 @@ from typing import Any
 
 class StackOverflowException(Exception):
     """StackOverflowException."""
+
     pass
 
 
@@ -15,6 +16,7 @@ class StackOverflowException(Exception):
 
 class StackUnderflowException(Exception):
     """StackUnderflowException."""
+
     pass
 
 
@@ -70,7 +72,7 @@ class Stack:
 
     def is_empty(self) -> bool:
         """
-        Is the list empty?
+        The list is empty.
 
         :return:
         """
@@ -78,7 +80,7 @@ class Stack:
 
     def is_full(self) -> bool:
         """
-        Is the list full?
+        The list is full.
 
         :return:
         """
