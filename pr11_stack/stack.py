@@ -6,6 +6,7 @@ from typing import Any
 
 
 class StackOverflowException(Exception):
+    """StackOverflowException."""
     pass
 
 
@@ -13,6 +14,7 @@ class StackOverflowException(Exception):
 
 
 class StackUnderflowException(Exception):
+    """StackUnderflowException."""
     pass
 
 
@@ -37,7 +39,6 @@ class Stack:
 
         If stack has no more room, raises StackOverflowException.
         """
-
         if len(self.elements) >= self.capacity:
             raise StackOverflowException
         else:
@@ -69,14 +70,16 @@ class Stack:
 
     def is_empty(self) -> bool:
         """
-        Is empty?.
+        Is the list empty?
+
         :return:
         """
         pass
 
     def is_full(self) -> bool:
         """
-        Is full?.
+        Is the list full?
+
         :return:
         """
         pass
