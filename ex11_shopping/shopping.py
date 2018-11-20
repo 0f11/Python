@@ -1,8 +1,8 @@
 """Store imitation."""
 
 
-# TODO: create class for custom exception.
 class ProductCannotBeSold(Exception):
+    """Product Cannot Be Sold."""
     pass
 
 
@@ -120,8 +120,8 @@ class Store:
         self.check_product_availability(product, amount)
         self.allowed_to_buy(product, customer)
         self.products.remove(product)
+        customer.pay(product.price)
         customer.add_item(product, amount)
-        customer.money -= product.price
         self.money += product.price
         return "Thank you for the purchase!"
 
@@ -162,7 +162,7 @@ class Store:
 
     def __str__(self) -> str:
         """
-        Store's object representation in string format.
+        Store object representation in string format.
 
         :return: string
         """
