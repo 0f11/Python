@@ -18,7 +18,6 @@ class Product:
         """
         self.name = name
         self.price = price
-        pass
 
     def __str__(self) -> str:
         """
@@ -27,7 +26,6 @@ class Product:
         :return: string
         """
         return f"Product: {self.name}, price: {self.price}"
-        pass
 
     def __repr__(self) -> str:
         """
@@ -54,7 +52,6 @@ class Customer:
         self.age = age
         self.money = money
         self.items = []
-        pass
 
     def add_item(self, product: Product, amount: int) -> None:
         """
@@ -78,8 +75,7 @@ class Customer:
             self.money -= money_to_pay
             return None
         else:
-            raise ProductCannotBeSold
-        pass
+            raise ProductCannotBeSold("You do not have enough money to pay for chosen product!")
 
     def __str__(self) -> str:
         """
@@ -123,7 +119,6 @@ class Store:
         """
         self.check_product_availability(product, amount)
         self.allowed_to_buy(product, customer)
-        # customer.pay(100)
 
     def allowed_to_buy(self, product: Product, customer: Customer):
         """
@@ -138,7 +133,6 @@ class Store:
         """
         if product == beer or tobacco and customer.age < 18:
             raise ProductCannotBeSold(f"You are too young to buy {product}!")
-        pass
 
     def check_product_availability(self, product: Product, amount: int):
         """
@@ -148,13 +142,10 @@ class Store:
         :param product: product to be bought
         :param amount: amount of product
         """
-
         if product not in self.products:
             raise ProductCannotBeSold("Item not found!")
         if self.products.count(product) < amount:
             raise ProductCannotBeSold("Item is not available in chosen amount!")
-
-        pass
 
     def add_product(self, product: Product) -> None:
         """
