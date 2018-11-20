@@ -67,7 +67,7 @@ class Customer:
         """
         Checks if customer has enough money to pay for the product.
 
-        Returns nothing, but raises exception if customer has not enough money to pay.
+        Returns nothing,, but raises exception if customer has not enough money to pay.
         In other case reduces amount of customer's money.
         :param money_to_pay: money amount needed to be paid
         """
