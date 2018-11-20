@@ -131,7 +131,7 @@ class Store:
         :param product: product to buy
         :param customer: customer who makes the purchase
         """
-        if product == beer or tobacco and customer.age < 18:
+        if product == "beer" or "tobacco" and customer.age < 18:
             raise ProductCannotBeSold(f"You are too young to buy {product}!")
 
     def check_product_availability(self, product: Product, amount: int):
