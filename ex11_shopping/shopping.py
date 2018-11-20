@@ -139,11 +139,11 @@ class Store:
         :param product: product to buy
         :param customer: customer who makes the purchase
         """
-        if product == tobacco:
+        if product == "tobacco":
             if customer.age <= 18:
                 raise ProductCannotBeSold(f"You are too young to buy tobacco!")
 
-        if product == beer:
+        if product == "beer":
             if customer.age <= 18:
                 raise ProductCannotBeSold(f"You are too young to buy beer!")
 
