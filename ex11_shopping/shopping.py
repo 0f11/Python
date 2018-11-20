@@ -124,6 +124,7 @@ class Store:
         customer.pay(product.price)
         customer.add_item(product, amount)
         self.products.remove(product)
+
         self.money += product.price
         return "Thank you for the purchase!"
 
@@ -138,8 +139,13 @@ class Store:
         :param product: product to buy
         :param customer: customer who makes the purchase
         """
-        if product == "beer" or "tobacco" and customer.age <= 18:
-            raise ProductCannotBeSold(f"You are too young to buy {product.name}!")
+        if product == tobacco:
+            if customer.age <= 18:
+                raise ProductCannotBeSold(f"You are too young to buy tobacco!")
+
+        if product == beer:
+            if customer.age <= 18:
+                raise ProductCannotBeSold(f"You are too young to buy beer!")
 
     def check_product_availability(self, product: Product, amount: int):
         """
@@ -193,7 +199,7 @@ if __name__ == "__main__":
     # print(beer not in store.products)  # -> True
     # print(john)  # -> John's items: beer; money: 250.
 
-    tobacco = Product("tobacco", 55)
+    tobacco = Product("choco", 55)
     store.add_product(tobacco)
     print(store.buy(tobacco, 1, bobby))  # -> You are too young to buy tobacco!
 
