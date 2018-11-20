@@ -2,7 +2,6 @@
 
 
 class ProductCannotBeSold(Exception):
-
     """Product Cannot Be Sold."""
 
     pass
