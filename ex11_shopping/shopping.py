@@ -65,7 +65,7 @@ class Customer:
 
     def pay(self, money_to_pay: int) -> None:
         """
-        Checks if customer has enough money to pay for the product.
+        Check if customer has enough money to pay for the product.
 
         Returns nothing,, but raises exception if customer has not enough money to pay.
         In other case reduces amount of customer's money.
@@ -110,7 +110,7 @@ class Store:
 
     def buy(self, product: Product, amount: int, customer: Customer) -> str:
         """
-        Represents how customer buys product.
+        Represent how customer buys product.
 
         :param product: product the customer wants
         :param amount: pieces of product
@@ -119,10 +119,14 @@ class Store:
         """
         self.check_product_availability(product, amount)
         self.allowed_to_buy(product, customer)
+        self.products.remove(product)
+        customer.money -= product.price
+        self.money += product.price
+        return "Thank you for the purchase!"
 
     def allowed_to_buy(self, product: Product, customer: Customer):
         """
-        Checks if customer is allowed to buy some particular products.
+        Check if customer is allowed to buy some particular products.
 
         Permission depends on customer's age
 
@@ -132,11 +136,11 @@ class Store:
         :param customer: customer who makes the purchase
         """
         if product == "beer" or "tobacco" and customer.age < 18:
-            raise ProductCannotBeSold(f"You are too young to buy {product}!")
+            raise ProductCannotBeSold(f"You are too young to buy {product.name}!")
 
     def check_product_availability(self, product: Product, amount: int):
         """
-        Checks if chosen amount of product is present in stock.
+        Check if chosen amount of product is present in stock.
 
         Must raise exception if no product found or not enough in stock.
         :param product: product to be bought
