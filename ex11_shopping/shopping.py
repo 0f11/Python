@@ -120,6 +120,7 @@ class Store:
         self.check_product_availability(product, amount)
         self.allowed_to_buy(product, customer)
         self.products.remove(product)
+        customer.add_item(product, amount)
         customer.money -= product.price
         self.money += product.price
         return "Thank you for the purchase!"
