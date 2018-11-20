@@ -121,9 +121,9 @@ class Store:
         """
         self.check_product_availability(product, amount)
         self.allowed_to_buy(product, customer)
-        self.products.remove(product)
         customer.pay(product.price)
         customer.add_item(product, amount)
+        self.products.remove(product)
         self.money += product.price
         return "Thank you for the purchase!"
 
@@ -189,13 +189,13 @@ if __name__ == "__main__":
         store.add_product(choco)
         store.add_product(pretzel)
 
-    print(store.buy(beer, 1, john))  # -> Thank you for the purchase!
-    print(beer not in store.products)  # -> True
-    print(john)  # -> John's items: beer; money: 250.
+    # print(store.buy(beer, 1, john))  # -> Thank you for the purchase!
+    # print(beer not in store.products)  # -> True
+    # print(john)  # -> John's items: beer; money: 250.
 
-    # tobacco = Product("tobacco", 55)
-    # store.add_product(tobacco)
-    # print(store.buy(tobacco, 1, bobby))  # -> You are too young to buy tobacco!
+    tobacco = Product("tobacco", 55)
+    store.add_product(tobacco)
+    print(store.buy(tobacco, 1, bobby))  # -> You are too young to buy tobacco!
 
     # print(store.buy(water, 2, sandy))  # -> Item is not available in chosen amount!
     #
