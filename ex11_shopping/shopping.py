@@ -2,7 +2,9 @@
 
 
 class ProductCannotBeSold(Exception):
+
     """Product Cannot Be Sold."""
+
     pass
 
 
@@ -97,7 +99,7 @@ class Customer:
             else:
                 item_list.append(f"{p.name}({cnt})")
         items = ", ".join(item_list)
-        return f"{self.name}'s items: {items}: {self.money}."
+        return f"{self.name}'s items: {items}; money: {self.money}."
 
 
 class Store:
@@ -191,16 +193,16 @@ if __name__ == "__main__":
     print(beer not in store.products)  # -> True
     print(john)  # -> John's items: beer; money: 250.
 
-    tobacco = Product("tobacco", 55)
-    store.add_product(tobacco)
-    print(store.buy(tobacco, 1, bobby))  # -> You are too young to buy tobacco!
+    # tobacco = Product("tobacco", 55)
+    # store.add_product(tobacco)
+    # print(store.buy(tobacco, 1, bobby))  # -> You are too young to buy tobacco!
 
-    print(store.buy(water, 2, sandy))  # -> Item is not available in chosen amount!
-
-    candy = Product("candy", 25)
-    print(store.buy(candy, 1, bobby))  # -> Item not found!
-
-    store.buy(choco, 2, bobby)
-    print(bobby.money)  # -> 60
-    store.buy(water, 1, bobby)
-    print(bobby)  # -> Bobby's items: chocolate(2), water; money: 30.
+    # print(store.buy(water, 2, sandy))  # -> Item is not available in chosen amount!
+    #
+    # candy = Product("candy", 25)
+    # print(store.buy(candy, 1, bobby))  # -> Item not found!
+    #
+    # store.buy(choco, 2, bobby)
+    # print(bobby.money)  # -> 60
+    # store.buy(water, 1, bobby)
+    # print(bobby)  # -> Bobby's items: chocolate(2), water; money: 30.
