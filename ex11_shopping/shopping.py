@@ -139,11 +139,11 @@ class Store:
         :param product: product to buy
         :param customer: customer who makes the purchase
         """
-        if product == "tobacco":
+        if product.name == "tobacco":
             if customer.age <= 18:
                 raise ProductCannotBeSold(f"You are too young to buy tobacco!")
 
-        if product == "beer":
+        if product.name == "beer":
             if customer.age <= 18:
                 raise ProductCannotBeSold(f"You are too young to buy beer!")
 
@@ -199,7 +199,7 @@ if __name__ == "__main__":
     # print(beer not in store.products)  # -> True
     # print(john)  # -> John's items: beer; money: 250.
 
-    tobacco = Product("choco", 55)
+    tobacco = Product("tobacco", 55)
     store.add_product(tobacco)
     print(store.buy(tobacco, 1, bobby))  # -> You are too young to buy tobacco!
 
