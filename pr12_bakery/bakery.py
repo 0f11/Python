@@ -78,10 +78,10 @@ class Bakery:
         return d
 
     def get_pastries(self) -> list:
-        return self.pastries
+        return sorted(self.pastries, key=lambda p: p.complexity_level, reverse=True)
 
     def get_bakers(self) -> list:
-        return self.bakers
+        return sorted(self.bakers, key=lambda b: b.experience_level, reverse=True)
 
     def __repr__(self):
         return f"Bakery {self.name}: {len(self.bakers)} baker(s)"
