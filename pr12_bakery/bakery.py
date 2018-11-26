@@ -41,7 +41,8 @@ class Bakery:
                 return Baker
 
     def remove_baker(self, baker: Baker):
-        self.bakers.remove(baker)
+        if baker in self.bakers:
+            self.bakers.remove(baker)
         pass
 
     def add_recipe(self, name: str):
