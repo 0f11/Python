@@ -52,10 +52,8 @@ class Bakery:
     def add_recipe(self, name: str):
         price = len(name)
         exp_level_baker = [bakers.experience_level for bakers in self.bakers]
-
-        complexity_level = abs((len(name) * len(self.bakers)) - min(exp_level_baker))
-
         if price <= self.budget and name not in self.recipe and (len(self.bakers)) > 0:
+            complexity_level = abs((len(name) * len(self.bakers)) - min(exp_level_baker))
             recipe = Recipe(name, complexity_level)
             self.recipe[name] = recipe
             self.budget -= price
