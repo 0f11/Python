@@ -52,7 +52,7 @@ class Bakery:
     def add_recipe(self, name: str):
         price = len(name)
         exp_level_baker = [bakers.experience_level for bakers in self.bakers]
-        if price >= self.budget and name not in self.recipe and (len(self.bakers)) > 0:
+        if price < self.budget and name not in self.recipe and (len(self.bakers)) > 0:
             complexity_level = abs((len(name) * len(self.bakers)) - min(exp_level_baker))
             recipe = Recipe(name, complexity_level)
             self.recipe[name] = recipe
@@ -67,6 +67,7 @@ class Bakery:
                     price = len(name) * 4
                     self.budget += price // 2
                     self.min_experience_level += 1
+
                     return Pastry
 
     def get_recipes(self) -> dict:
