@@ -10,6 +10,7 @@ class Baker:
     def __repr__(self):
         return f"Baker: {self.name}({self.experience_level})"
 
+
 class Pastry:
     def __init__(self, name: str, complexity_level: int):
         self.name = name
@@ -18,12 +19,15 @@ class Pastry:
     def __repr__(self):
         return self.name
 
+
 class Recipe:
     def __init__(self, name, complexity_level):
         self.name = name
         self.complexity_level = complexity_level
+
     def __repr__(self):
         return self.name
+
 
 class Bakery:
     def __init__(self, name: str, min_experience_level: int, budget: int):
@@ -34,7 +38,7 @@ class Bakery:
         self.recipe = {}
         self.pastries = []
 
-    def add_baker(self, baker: Baker) -> Baker:
+    def add_baker(self, baker: Baker):
         if isinstance(baker, Baker):
             if self.min_experience_level <= baker.experience_level:
                 self.bakers.append(baker)
@@ -47,27 +51,25 @@ class Bakery:
 
     def add_recipe(self, name: str):
         price = len(name)
+        exp_level_baker = [bakers.experience_level for bakers in self.bakers]
 
-        print(self.bakers)
-        complexity_level = abs((len(name) * len(self.bakers)))# - int(minimum))
+        complexity_level = abs((len(name) * len(self.bakers)) - min(exp_level_baker))
 
         if price <= self.budget and name not in self.recipe and (len(self.bakers)) > 0:
             recipe = Recipe(name, complexity_level)
             self.recipe[name] = recipe
             self.budget -= price
 
-        pass
+    def make_order(self, name: str):
+        exp_level_baker = [bakers.experience_level for bakers in self.bakers]
 
-    def make_order(self, name: str) -> Pastry:
-        pass
-        # if name in self.recipe.keys() and len(self.bakers) > 0:
-        #     for exp in Baker.experience_level:
-        #         if exp >= Pastry.complexity_level:
-        #             price = len(name) * 4
-        #             self.budget += price // 2
-        #             Baker.money += price // 2
-        #             self.min_experience_level += 1
-        #             return Pastry
+        if name in self.recipe.keys() and len(self.bakers) > 0:
+            for exp in exp_level_baker:
+                if exp:
+                    price = len(name) * 4
+                    self.budget += price // 2
+                    self.min_experience_level += 1
+                    return Pastry
 
     def get_recipes(self) -> dict:
         d = {}
@@ -84,19 +86,20 @@ class Bakery:
     def __repr__(self):
         return f"Bakery {self.name}: {len(self.bakers)} baker(s)"
 
-if __name__ == '__main__':
 
-    bakery1 = Bakery("Pagariposid", 10, 100)
-    print(bakery1)  # Bakery Pagariposid: 0 baker(s)
+# if __name__ == '__main__':
 
-
-    bakery1.add_baker(Baker("Ago", 11, 0))
-    bakery1.add_baker(Baker("Age", 12, 0))
-    print(bakery1)  # Bakery Pagariposid: 0 baker(s) => Baker Ago was not added because of low experience level (Sorry Ago)
-
-    print(bakery1.make_order("cake"))  # None => No such recipe nor baker in bakery
-    bakery1.add_recipe("cake")
-    print(bakery1.make_order("cake"))
+    # bakery1 = Bakery("Pagariposid", 10, 100)
+    # print(bakery1)  # Bakery Pagariposid: 0 baker(s)
+    #
+    # bakery1.add_baker(Baker("Ago", 11, 0))
+    # bakery1.add_baker(Baker("Age", 12, 0))
+    # bakery1.add_baker(Baker("Age", 13, 0))
+    # print(bakery1)  # Bakery Pagariposid: 0 baker(s) => Baker Ago was not added because of low experience level (Sorry Ago)
+    #
+    # print(bakery1.make_order("cake"))  # None => No such recipe nor baker in bakery
+    # bakery1.add_recipe("cake")
+    # print(bakery1.make_order("cake"))
     #######################################################################
 
     # polly = Baker("Polly", 10, 5)
