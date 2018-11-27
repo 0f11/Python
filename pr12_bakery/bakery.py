@@ -2,6 +2,8 @@
 
 
 class Baker:
+    """Reb baker model."""
+
     def __init__(self, name: str, experience_level: int, money: int):
         """
         Constructor.
@@ -17,12 +19,15 @@ class Baker:
     def __repr__(self):
         """
         Helper.
+
         :return:
         """
         return f"Baker: {self.name}({self.experience_level})"
 
 
 class Pastry:
+    """Reb pastry model."""
+
     def __init__(self, name: str, complexity_level: int):
         """
         Constructor.
@@ -43,6 +48,8 @@ class Pastry:
 
 
 class Recipe:
+    """Rep recipe model."""
+
     def __init__(self, name, complexity_level):
         """
         Constructor.
@@ -63,6 +70,8 @@ class Recipe:
 
 
 class Bakery:
+    """Rep bakery model."""
+
     def __init__(self, name: str, min_experience_level: int, budget: int):
         """
         Constructor.
