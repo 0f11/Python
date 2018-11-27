@@ -76,15 +76,33 @@ class Trainers:
 class City:
     def __init__(self, max_gym_number):
         self.max_gym_number = max_gym_number
+        self.number_of_gyms = 0
+        self.gyms = []
 
     def build_gym(self, gym):
-        pass
+        if self.can_build_gym():
+            self.gyms.append(gym)
 
     def can_build_gym(self):
-        pass
+        if self.number_of_gyms < self.max_gym_number:
+            return True
+
 
     def destroy_gym(self):
-        pass
+        min_members_count = min(len(gym.members) for gym in self.gyms)
+        min_members_count = min(self.gyms, key=lambda gym: len(gym.members))
+        min_gyms = [gym for gym in self.gyms if len(gym.members) == min_members_count]
+
+        min_members_count = len(self.gyms[0].members)
+        gyms_to_destroy = []
+        for gym in self.gyms:
+            if len(gym.members) < min_members_count:
+                min_members_count = len(gym.members)
+                gyms_to_destroy = [gym]
+            elif len(gym.members) == min_members_count:
+                gyms_to_destroy.append(gym)
+        for gym in gyms_to_destroy:
+            pass
 
     def get_max_members_gym(self):
         pass
