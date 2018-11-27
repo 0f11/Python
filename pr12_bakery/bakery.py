@@ -1,3 +1,6 @@
+"""Bakery.py."""
+
+
 class Baker:
     def __init__(self, name: str, experience_level: int, money: int):
         """
