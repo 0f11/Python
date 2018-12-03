@@ -16,7 +16,8 @@ def get_nearby_stops(api_base, lat, lng):
     :return: List of all nearby stops
     """
     stops = requests.get(api_base + f"/stops/{lat}/{lng}").json()
-    return stops
+
+    return sorted(stops, key=lambda d: d['distance'])
 
 
 def get_nearest_stop(api_base, lat, lng):
