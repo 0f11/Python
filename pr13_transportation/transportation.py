@@ -21,7 +21,7 @@ def get_nearby_stops(api_base, lat, lng):
 
 def get_nearest_stop(api_base, lat, lng):
     """
-    Get nearest stop.
+    Get nearest, stop.
 
     :param api_base: Base URL that the endpoint gets appended to
     :param lat: Latitude
