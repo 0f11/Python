@@ -47,7 +47,7 @@ def get_next_departures(api_base, region, stop_id):
 
 def get_next_departure(api_base, region, stop_id):
     """
-    Get next departure from stop.
+    Get next departure, from stop.
 
     :param api_base: Base URL that the endpoint gets appended to
     :param region: Region
