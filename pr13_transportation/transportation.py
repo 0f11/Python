@@ -29,8 +29,11 @@ def get_nearest_stop(api_base, lat, lng):
     :return: Nearest stop
     """
     stops = requests.get(api_base + f"/stops/{lat}/{lng}").json()
-    answer = min(stops, key=lambda d: d['distance'])
-    return answer
+    if len(stops) <= 0:
+        return None
+    else:
+        answer = min(stops, key=lambda d: d['distance'])
+        return answer
 
 
 def get_next_departures(api_base, region, stop_id):
@@ -55,8 +58,11 @@ def get_next_departure(api_base, region, stop_id):
     :return: Next departure from stop
     """
     departures = requests.get(api_base + f"/departures/{region}/{stop_id}").json()['departures']
-    answer = min(departures, key=lambda d: d['timeLocal'])
-    return answer
+    if len(departures) <= 0:
+        return None
+    else:
+        answer = min(departures, key=lambda d: d['timeLocal'])
+        return answer
 
 
 if __name__ == '__main__':
