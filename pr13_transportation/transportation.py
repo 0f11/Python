@@ -58,7 +58,7 @@ def get_next_departure(api_base, region, stop_id):
 
 
 if __name__ == '__main__':
-    # print(get_nearby_stops(API_BASE, 59.3977111, 24.660198))
-    # print(get_nearest_stop(API_BASE, 59.3977111, 24.660198))
-    # print(get_next_departures(API_BASE, REGION, get_nearest_stop(API_BASE, 59.3977111, 24.660198)["id"]))
-    # print(get_next_departure(API_BASE, REGION, get_nearest_stop(API_BASE, 59.3977111, 24.660198)["id"]))
+    print(get_nearby_stops(API_BASE, 59.3977111, 24.660198))
+    print(get_nearest_stop(API_BASE, 59.3977111, 24.660198))
+    print(get_next_departures(API_BASE, REGION, get_nearest_stop(API_BASE, 59.3977111, 24.660198)["id"]))
+    print(get_next_departure(API_BASE, REGION, get_nearest_stop(API_BASE, 59.3977111, 24.660198)["id"]))
