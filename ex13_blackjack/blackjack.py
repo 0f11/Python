@@ -47,7 +47,6 @@ class Deck:
 
         :param shuffle: if shuffle option is true, make new shuffled deck.
         """
-
         if shuffle == False:
             requests.get("https://deckofcardsapi.com/api/deck/new").json()
             self.deck_id = requests.get("https://deckofcardsapi.com/api/deck/new").json()['deck_id']
@@ -87,6 +86,10 @@ class BlackjackController:
         :param deck: deck to draw cards from.
         :param view: view to communicate with.
         """
+        deck.shuffle(deck.deck_id)
+
+
+
 
 
 class BlackjackView:
