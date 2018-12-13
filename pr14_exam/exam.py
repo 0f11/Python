@@ -68,9 +68,9 @@ def should_get_up_early(is_weekday, really_tired, first_class_is_programming):
     :param first_class_is_programming: is the first class a programming class, boolean
     :return: True if you should get up early, otherwise False
     """
-    if is_weekday == True or False and first_class_is_programming == True:
+    if is_weekday is True or False and first_class_is_programming is True:
         return True
-    if is_weekday == True and really_tired == False:
+    if is_weekday is True and really_tired is False:
         return True
     else:
         return False
@@ -178,7 +178,6 @@ def who_called(calls, name):
     :param name: name of the receiver
     :return: name of the caller
     """
-    calls = dict(calls)
     if len(calls) == 0:
         return -1
     if name in calls.values():
@@ -232,3 +231,9 @@ def show_highest_grade(grade1, grade2):
     else:
         print(f"Highest grade: {grade2}")
     return None
+
+
+if __name__ == '__main__':
+    print(who_called({}, "Nathan"))  # == -1
+    print(who_called({"Alex": "James", "Jeff": "Bill", "James": "Alex", "Daniel": "Matt"}, "Alex"))  # == "James"
+    print(who_called({"Alex": "James", "Jeff": "Bill", "James": "Alex", "Daniel": "Matt"}, "Olaf"))  # == -1
