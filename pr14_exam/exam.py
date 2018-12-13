@@ -1,3 +1,6 @@
+"""Exam.py."""
+
+
 def segment_number(first_number, last_number):
     """
     Return list with elements dividable by 5 but not dividable by 3 between (inclusive) two arguments.
@@ -16,13 +19,12 @@ def segment_number(first_number, last_number):
     for i in range(first_number, last_number + 1):
 
         if i % 5 == 0 and i % 3 != 0:
-
             answer.append(i)
 
     return answer
 
 
-def add_or_subtract(numbers):
+def add_or_subtract(numbers, op=1):
     """
     Return the sum of all numbers in a list.
 
@@ -45,16 +47,9 @@ def add_or_subtract(numbers):
     :param numbers: the list of number given.
     :return: the sum of all numbers.
     """
-    answer = 0
-    for i in numbers:
-        if i == 0:
-            for x in numbers:
-                answer -= x
-        else:
-            answer += i
-    return answer
-
-
+    if numbers.count(0) == 0:
+        return sum(numbers) * op
+    return sum(numbers[:numbers.index(0)]) * op + add_or_subtract(numbers[numbers.index(0) + 1:], op * -1)
 
 
 def should_get_up_early(is_weekday, really_tired, first_class_is_programming):
@@ -73,7 +68,12 @@ def should_get_up_early(is_weekday, really_tired, first_class_is_programming):
     :param first_class_is_programming: is the first class a programming class, boolean
     :return: True if you should get up early, otherwise False
     """
-    pass
+    if is_weekday == True or False and first_class_is_programming == True:
+        return True
+    if is_weekday == True and really_tired == False:
+        return True
+    else:
+        return False
 
 
 def pear_fear(pears, people):
@@ -86,12 +86,20 @@ def pear_fear(pears, people):
     Only whole pears will be used, so some pears may remain.
 
     #4
+    print(pear_fear(10, 3))  # == 5
+    print(pear_fear(10, 5))  # == 2
+    print(pear_fear(0, 3))  # == 0
+    print(pear_fear(17, 2))  # == 8
+    print(pear_fear(21, 10))  # == 3
 
     :param pears:
     :param people:
     :return:
     """
-    pass
+    if people == 3:
+        return pears // 2
+    no_fear_people = people // 3
+    return pears // (people - no_fear_people)
 
 
 def string_between_string(word1, word2):
@@ -106,7 +114,8 @@ def string_between_string(word1, word2):
     :param word2: Word to reverse and insert. String.
     :return: New word as string.
     """
-    pass
+    index = int(len(word1) / 2)
+    return word1[:index] + word2[::-1] + word1[index:]
 
 
 def get_padded_string(string1, string2):
@@ -117,12 +126,18 @@ def get_padded_string(string1, string2):
     For example when string1 is "pizza" and string2 is "bbq", this should return "bbqpizzabbq".
 
     #6
+     print(get_padded_string("pizza", "bbq"))  # == "bbqpizzabbq"
+    print(get_padded_string("dog", "cat"))  # == "catdogcat"
+    print(get_padded_string("geoff", "giraffe"))  # == "geoffgiraffegeoff"
 
     :param string1: String one
     :param string2:  String two
     :return: Padded string
     """
-    pass
+    if len(string1) >= len(string2):
+        return f"{string2}{string1}{string2}"
+    else:
+        return f"{string1}{string2}{string1}"
 
 
 def remove_duplicate(number_list):
@@ -133,13 +148,21 @@ def remove_duplicate(number_list):
     occurrences of two or more of the same
     numbers appearing after one another.
     Remove all but one of the duplicates.
-
+    assert remove_duplicate([1, 1, 2, 2, 3, 3]) == [1, 2, 3]
+    assert remove_duplicate([1, 2, 3]) == [1, 2, 3]
+    assert remove_duplicate([1, 1, 1, 1, 1, 2, 1, 1, 3]) == [1, 2, 1, 3]
     #7
 
     :param number_list: input list
     :return: new list
     """
-    pass
+    i = 0
+    while i < len(number_list) - 1:
+        if number_list[i] == number_list[i + 1]:
+            del number_list[i]
+        else:
+            i = i + 1
+    return number_list
 
 
 def who_called(calls, name):
@@ -155,7 +178,13 @@ def who_called(calls, name):
     :param name: name of the receiver
     :return: name of the caller
     """
-    pass
+    calls = dict(calls)
+    if len(calls) == 0:
+        return -1
+    if name in calls.values():
+        return calls[name]
+    else:
+        return -1
 
 
 def remove_lowest_digit(number):
@@ -168,8 +197,20 @@ def remove_lowest_digit(number):
     1 => 0
     :param number: non-negative integer
     :return: non-negative integer
+       assert remove_lowest_digit(123) == 23
+    assert remove_lowest_digit(100) == 10
+    assert remove_lowest_digit(7) == 0
+    assert remove_lowest_digit(171) == 71
     """
-    pass
+    numbers_list = []
+    numbers = str(number)
+    for i in numbers:
+        numbers_list.append(i)
+    if len(numbers_list) == 1:
+        return 0
+    numbers_list_2 = sorted(numbers_list)
+    numbers_list.remove(numbers_list_2[0])
+    return int("".join(numbers_list))
 
 
 def show_highest_grade(grade1, grade2):
@@ -186,51 +227,8 @@ def show_highest_grade(grade1, grade2):
     :param grade2:
     :return:
     """
-    pass
-
-
-if __name__ == '__main__':
-
-    # assert segment_number(1, 11) == [5, 10]
-    # assert segment_number(1, 4) == []
-    # assert segment_number(-20, 20) == [-20, -10, -5, 5, 10, 20]
-
-    print(add_or_subtract([1, 2, 0, 3]))# == 0
-    print(add_or_subtract([0, 1, 2]))# == -3
-    print(add_or_subtract([1, 2, 0, 2, 0, 4]))# == 5
-    #
-    # assert should_get_up_early(True, True, True) is True
-    # assert should_get_up_early(False, True, False) is False
-    #
-    # assert pear_fear(10, 3) == 5
-    # assert pear_fear(10, 5) == 2
-    # assert pear_fear(0, 3) == 0
-    # assert pear_fear(17, 2) == 8
-    # assert pear_fear(21, 10) == 3
-    #
-    # assert string_between_string("ho", "lle") == "hello"
-    # assert string_between_string("", "yas") == "say"
-    # assert string_between_string("smrt", "a") == "smart"
-    # assert string_between_string("w  d", " ro ") == "w  or  d"
-    # assert string_between_string(".,", ",.") == "..,,"
-    #
-    # assert get_padded_string("pizza", "bbq") == "bbqpizzabbq"
-    # assert get_padded_string("dog", "cat") == "catdogcat"
-    # assert get_padded_string("geoff", "giraffe") == "geoffgiraffegeoff"
-    #
-    # assert remove_duplicate([1, 1, 2, 2, 3, 3]) == [1, 2, 3]
-    # assert remove_duplicate([1, 2, 3]) == [1, 2, 3]
-    # assert remove_duplicate([1, 1, 1, 1, 1, 2, 1, 1, 3]) == [1, 2, 1, 3]
-    #
-    # assert who_called({}, "Nathan") == -1
-    # assert who_called({"Alex": "James", "Jeff": "Bill", "James": "Alex", "Daniel": "Matt"}, "Alex") == "James"
-    # assert who_called({"Alex": "James", "Jeff": "Bill", "James": "Alex", "Daniel": "Matt"}, "Olaf") == -1
-    #
-    # assert remove_lowest_digit(123) == 23
-    # assert remove_lowest_digit(100) == 10
-    # assert remove_lowest_digit(7) == 0
-    # assert remove_lowest_digit(171) == 71
-    #
-    # assert show_highest_grade(10, 14) is None
-    # # prints:
-    # # Highest grade: 14
+    if grade1 > grade2:
+        print(f"Highest grade: {grade1}")
+    else:
+        print(f"Highest grade: {grade2}")
+    return None
