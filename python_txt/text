@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
 List
 ----
-```python
+``python
 <list> = <list>[from_inclusive : to_exclusive : step_size]
 <list>.append(<el>)
 <list>.extend(<list>)
